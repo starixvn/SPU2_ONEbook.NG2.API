@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Web.Http;
 using Newtonsoft.Json;
 using ONEbook.NG2.API.DTO;
+using ONEbook.NG2.API.Log;
 
 namespace ONEbook.NG2.API.TestConsole
 {

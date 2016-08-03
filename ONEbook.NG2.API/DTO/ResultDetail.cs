@@ -2,16 +2,16 @@
 {
     public class ResultDetail
     {
-        public bool IsSuccess { get; set; }
+        public bool IsSuccess { get; internal set; }
 
-        public int CustId { get; set; }
+        public int CustId { get; internal set; }
 
-        public int CurrencyId { get; set; }
+        public int CurrencyId { get; internal set; }
 
-        public int ErrorCode { get; set; }
+        public int ErrorCode { get; internal set; }
 
-        public string ErrorDescription { get; set; }
+        public string ErrorDescription { get; internal set; }
 
-        public string Url { get; set; }
+        public string Url { get; internal set; }
     }
 }

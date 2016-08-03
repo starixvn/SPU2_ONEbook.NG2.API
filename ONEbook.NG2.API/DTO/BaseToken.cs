@@ -2,6 +2,6 @@
 {
     public class BaseToken
     {
-        public string Seq { get; set; }
+        public string Seq { get; internal set; }
     }
 }
