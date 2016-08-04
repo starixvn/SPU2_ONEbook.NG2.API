@@ -1,24 +1,13 @@
-﻿using System.Web.Http;
+﻿using System;
 using ONEbook.NG2.API.DTO;
-using ONEbook.NG2.API.Log;
 
 namespace ONEbook.NG2.API
 {
-    public class Services
+    public class Services : MarshalByRefObject
     {
-        private static object locker = new object();
-        private static HttpConfiguration config = null;
-
-        public Services()
+        public static Services Create()
         {
-            lock (locker)
-            {
-                if (object.ReferenceEquals(null, config))
-                {
-                    config = GlobalConfiguration.Configuration;
-                    config.MessageHandlers.Add(new Writer());
-                }
-            }
+            return WrapperServices<Services>.Wrap();
         }
 
         public Response SyncCustomers(Request request)
@@ -64,6 +53,6 @@ namespace ONEbook.NG2.API
         public Response ShowTicketResult(Request request)
         {
             return new Response();
-        }
+        }        
     }
 }
