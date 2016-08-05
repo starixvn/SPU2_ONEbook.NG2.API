@@ -9,6 +9,7 @@ using System.Security.Permissions;
 using System.Text;
 using System.Xml;
 using System.Xml.Linq;
+using Fanex.Module.Logs.Services;
 using Newtonsoft.Json;
 
 namespace ONEbook.NG2.API.Log
@@ -45,25 +46,29 @@ namespace ONEbook.NG2.API.Log
             {
                 var result = methodInfo.Invoke(_decorated, methodCall.InArgs);                
                 var output = JsonConvert.SerializeObject(result);
-
-                // var xml = JsonToXml(json);
-
+                
                 Log("In Dynamic Proxy - After executing '{0}' result {1} ", methodCall.MethodName, output);
                 return new ReturnMessage(result, null, 0, methodCall.LogicalCallContext, methodCall);
             }
             catch (RemotingTimeoutException te)
             {
                 Log("In Dynamic Proxy- Exception {0} executing '{1}'", te, methodCall.MethodName);
+                te.Write();
+
                 return new ReturnMessage(te, methodCall);
             }
             catch (RemotingException re)
             {
                 Log("In Dynamic Proxy- Exception {0} executing '{1}'", re, methodCall.MethodName);
+                re.Write();
+
                 return new ReturnMessage(re, methodCall);
             }
             catch (Exception e)
             {
                 Log("In Dynamic Proxy- Exception {0} executing '{1}'", e, methodCall.MethodName);
+                e.Write();
+
                 return new ReturnMessage(e, methodCall);
             }
         }
