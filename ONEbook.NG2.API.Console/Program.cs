@@ -7,8 +7,7 @@ namespace ONEbook.NG2.API.TestConsole
     {
         public static void Main(string[] args)
         {
-            // var proxy = WrapperServices<Services>.Wrap();
-            var proxy = Services.Create();
+            var proxy = new Services();
             proxy.ChangeUsersGroup(new Request());
             proxy.CheckIsSyncCustomers(new Request());
             proxy.KickoutMembers(new Request());
