@@ -11,6 +11,7 @@ using System.Xml;
 using System.Xml.Linq;
 using Fanex.Module.Logs.Services;
 using Newtonsoft.Json;
+using ONEbook.NG2.API.DTO;
 
 namespace ONEbook.NG2.API.Log
 {
@@ -25,12 +26,17 @@ namespace ONEbook.NG2.API.Log
             // RealProxy uses the Type to generate a transparent proxy.
             _decorated = (T)Activator.CreateInstance(typeof(T), true);
         }
-               
-        private void Log(string msg, params object[] arg)
+
+        private int FunctionToId(string functionName)
         {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(msg, arg);
-            Console.ResetColor();
+            int length = functionName.Length;
+            int num = 0;
+            for (int index = 1; index <= length; ++index)
+            {
+                num += (int)functionName[length - index] + index;
+            }
+
+            return num;
         }
 
         [SecurityPermissionAttribute(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.Infrastructure)]
@@ -38,36 +44,46 @@ namespace ONEbook.NG2.API.Log
         {
             var methodCall = msg as IMethodCallMessage;
             var methodInfo = methodCall.MethodBase as MethodInfo;
-            var json = JsonConvert.SerializeObject(methodCall.InArgs);
+            var json = JsonConvert.SerializeObject(methodCall.InArgs[0]);
+            var req = JsonConvert.DeserializeObject<Request>(json);
             var xml = JsonToXml(json);
 
-            Log("In Dynamic Proxy - Before executing '{0}' params {1}", methodCall.MethodName, json);
+            var actionId = FunctionToId(methodCall.MethodName);
+            var productId = 23;
+            var systemId = req.Auth.SiteId.Equals("3000") ? 2 : 3;
+
+            var logger = new APILogger();
+            var logId = 0;
 
             try
-            {
+            {                
+                logId = logger.LogRequest(systemId, productId, req.Call.UserId, methodCall.MethodName, req.Call.CustIds[0], actionId, xml);
+
                 var result = methodInfo.Invoke(_decorated, methodCall.InArgs);                
                 var output = JsonConvert.SerializeObject(result);
-                
-                Log("In Dynamic Proxy - After executing '{0}' result {1} ", methodCall.MethodName, output);
+                var response = JsonConvert.DeserializeObject<Response>(output);
+
+                logger.LogResponse(logId, 0, output);
+
                 return new ReturnMessage(result, null, 0, methodCall.LogicalCallContext, methodCall);
             }
             catch (RemotingTimeoutException te)
             {
-                Log("In Dynamic Proxy- Exception {0} executing '{1}'", te, methodCall.MethodName);
+                logger.LogResponse(logId, 5008, te.ToString());
                 te.Write();
 
                 return new ReturnMessage(te, methodCall);
             }
             catch (RemotingException re)
             {
-                Log("In Dynamic Proxy- Exception {0} executing '{1}'", re, methodCall.MethodName);
+                logger.LogResponse(logId, 5009, re.ToString());
                 re.Write();
 
                 return new ReturnMessage(re, methodCall);
             }
             catch (Exception e)
             {
-                Log("In Dynamic Proxy- Exception {0} executing '{1}'", e, methodCall.MethodName);
+                logger.LogResponse(logId, 5010, e.ToString());
                 e.Write();
 
                 return new ReturnMessage(e, methodCall);

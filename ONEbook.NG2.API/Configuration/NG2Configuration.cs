@@ -5,7 +5,7 @@ namespace ONEbook.NG2.API.Configuration
     /// <summary>
     /// NG2 Configuration class.
     /// </summary>
-    public class NG2Configuration : ConfigurationSection
+    internal class NG2Configuration : ConfigurationSection
     {
         private static NG2Configuration _instance = null;
 

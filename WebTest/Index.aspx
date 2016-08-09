@@ -9,7 +9,9 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <%= Newtonsoft.Json.JsonConvert.SerializeObject(ONEbook.NG2.API.Configuration.NG2Configuration.Instance)%>
+        <%= Newtonsoft.Json.JsonConvert.SerializeObject(new ONEbook.NG2.API.DTO.Request())%><br />
+        <%= Newtonsoft.Json.JsonConvert.SerializeObject(new ONEbook.NG2.API.DTO.Response())%>
+        <%new ONEbook.NG2.API.Services().SyncCustomers(new ONEbook.NG2.API.DTO.Request { Call = new ONEbook.NG2.API.DTO.Call { CustIds = new List<int> { 123456 } } }); %>
     </div>
     </form>
 </body>
