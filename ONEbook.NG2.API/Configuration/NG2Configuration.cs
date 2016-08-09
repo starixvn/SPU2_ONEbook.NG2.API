@@ -51,7 +51,7 @@ namespace ONEbook.NG2.API.Configuration
         /// <summary>
         /// Debug mode to trace info.
         /// </summary>
-        [ConfigurationProperty("Debug", DefaultValue = 0, IsRequired = false)]
+        [ConfigurationProperty("Debug", DefaultValue = "0", IsRequired = false)]
         public string Debug
         {
             get { return base["Debug"] as string; }
