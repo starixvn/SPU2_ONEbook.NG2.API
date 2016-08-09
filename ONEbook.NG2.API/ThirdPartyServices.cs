@@ -7,7 +7,7 @@ namespace ONEbook.NG2.API
     {
         public Response SyncCustomers(Request request)
         {
-            return new Response();
+            return new Response() { TimeStamp = request.TimeStamp };
         }
 
         public Response ChangeUsersGroup(Request request)

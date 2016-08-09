@@ -14,6 +14,7 @@ namespace ONEbook.NG2.API.DTO
         {
             CustIds = new List<int>();
             Currencies = new Dictionary<int, decimal>();
+            Language = "en-US";
         }
 
         /// <summary>
@@ -42,7 +43,7 @@ namespace ONEbook.NG2.API.DTO
         public int RoleId { get; set; }
 
         /// <summary>
-        /// Message site id of customer. SMA is empty. Member is 4100300.
+        /// Message site id of customer. SMA is null. Member is 4100300.
         /// </summary>
         public string SiteId { get; set; }
 

@@ -5,9 +5,9 @@ namespace ONEbook.NG2.API
     /// <summary>
     /// Service for system to interact with 3rd.
     /// </summary>
-    public class Services
+    public sealed class Services
     {
-        private readonly ThirdPartyServices _proxy;
+        private ThirdPartyServices _proxy;
 
         /// <summary>
         /// Initializes the instance of <see cref="Services"/> class.
@@ -16,15 +16,24 @@ namespace ONEbook.NG2.API
         {
             _proxy = WrapperServices<ThirdPartyServices>.Wrap();            
         }
-        
+
+        private ThirdPartyServices Instance
+        {
+            get
+            {
+                _proxy = object.ReferenceEquals(null, _proxy) ? WrapperServices<ThirdPartyServices>.Wrap() : _proxy;
+                return _proxy;
+            }
+        }
+                
         /// <summary>
         /// Synchronizes customers.
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
         public Response SyncCustomers(Request request)
-        {
-            return _proxy.SyncCustomers(request);
+        {         
+            return Instance.SyncCustomers(request);
         }
 
         /// <summary>
@@ -34,7 +43,7 @@ namespace ONEbook.NG2.API
         /// <returns></returns>
         public Response ChangeUsersGroup(Request request)
         {
-            return _proxy.ChangeUsersGroup(request);
+            return Instance.ChangeUsersGroup(request);
         }
 
         /// <summary>
@@ -44,7 +53,7 @@ namespace ONEbook.NG2.API
         /// <returns></returns>
         public Response CheckIsSyncCustomers(Request request)
         {
-            return _proxy.CheckIsSyncCustomers(request);
+            return Instance.CheckIsSyncCustomers(request);
         }
 
         /// <summary>
@@ -54,7 +63,7 @@ namespace ONEbook.NG2.API
         /// <returns>Response info.</returns>
         public Response KickoutMembers(Request request)
         {
-            return _proxy.KickoutMembers(request);
+            return Instance.KickoutMembers(request);
         }
 
         /// <summary>
@@ -64,7 +73,7 @@ namespace ONEbook.NG2.API
         /// <returns>Response info.</returns>
         public Response ShowRiskAndForecast(Request request)
         {
-            return _proxy.ShowRiskAndForecast(request);
+            return Instance.ShowRiskAndForecast(request);
         }
 
         /// <summary>
@@ -74,7 +83,7 @@ namespace ONEbook.NG2.API
         /// <returns>Response info.</returns>
         public Response ShowSchedule(Request request)
         {
-            return _proxy.ShowSchedule(request);
+            return Instance.ShowSchedule(request);
         }
 
         /// <summary>
@@ -84,7 +93,7 @@ namespace ONEbook.NG2.API
         /// <returns>Response info.</returns>
         public Response SyncExchangeRates(Request request)
         {
-            return _proxy.SyncExchangeRates(request);
+            return Instance.SyncExchangeRates(request);
         }
 
         /// <summary>
@@ -94,7 +103,7 @@ namespace ONEbook.NG2.API
         /// <returns>Response info.</returns>
         public Response ShowResult(Request request)
         {
-            return _proxy.ShowResult(request);
+            return Instance.ShowResult(request);
         }
 
         /// <summary>
@@ -104,7 +113,7 @@ namespace ONEbook.NG2.API
         /// <returns>Response info.</returns>
         public Response ShowTicketResult(Request request)
         {
-            return _proxy.ShowTicketResult(request);
+            return Instance.ShowTicketResult(request);
         }        
     }
 }

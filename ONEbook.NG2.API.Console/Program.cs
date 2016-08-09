@@ -6,12 +6,13 @@ namespace ONEbook.NG2.API.TestConsole
     public class Program
     {
         public static void Main(string[] args)
-        {
-            var proxy = new Services();
+        {            
+            /*var proxy = new Services();
             proxy.ChangeUsersGroup(new Request());
             proxy.CheckIsSyncCustomers(new Request());
             proxy.KickoutMembers(new Request());
-                        
+            proxy.SyncCustomers(new Request());*/
+
             Console.ReadLine();
         }        
     }

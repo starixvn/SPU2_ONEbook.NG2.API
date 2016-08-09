@@ -39,6 +39,7 @@ namespace ONEbook.NG2.API.Log
             var methodCall = msg as IMethodCallMessage;
             var methodInfo = methodCall.MethodBase as MethodInfo;
             var json = JsonConvert.SerializeObject(methodCall.InArgs);
+            var xml = JsonToXml(json);
 
             Log("In Dynamic Proxy - Before executing '{0}' params {1}", methodCall.MethodName, json);
 
@@ -80,6 +81,6 @@ namespace ONEbook.NG2.API.Log
                 var quotas = new XmlDictionaryReaderQuotas();
                 return XDocument.Load(JsonReaderWriterFactory.CreateJsonReader(stream, quotas));
             }
-        }        
+        }
     }
 }

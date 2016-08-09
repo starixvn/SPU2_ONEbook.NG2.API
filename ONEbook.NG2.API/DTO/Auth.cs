@@ -1,4 +1,6 @@
-﻿namespace ONEbook.NG2.API.DTO
+﻿using ONEbook.NG2.API.Configuration;
+
+namespace ONEbook.NG2.API.DTO
 {
     /// <summary>
     /// Authentication info.
@@ -6,17 +8,28 @@
     public class Auth
     {
         /// <summary>
+        /// Initializes the instance of <see cref="Auth"/> class.
+        /// </summary>
+        public Auth()
+        {
+            var config = NG2Configuration.Instance;
+            Login = config.Login;
+            Password = config.Password;
+            SiteId = "2000";
+        }
+
+        /// <summary>
         /// Login info to access to 3rd API.
         /// </summary>
-        public string Login { get; set; }
+        private string Login { get; set; }
 
         /// <summary>
         /// Secret token to access to 3rd API.
         /// </summary>
-        public string Password { get; set; }
+        private string Password { get; set; }
 
         /// <summary>
-        /// Message site id. SMA is empty. Member is 4100300.
+        /// Message site id. NAP is 2000, Alpha is 3000.
         /// </summary>
         public string SiteId { get; set; }
     }

@@ -12,6 +12,7 @@
         {
             Auth = new Auth();
             Call = new Call();
+            TimeStamp = System.DateTime.Now;
         }
 
         /// <summary>
