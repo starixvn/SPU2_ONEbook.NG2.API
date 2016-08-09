@@ -21,7 +21,7 @@ namespace ONEbook.NG2.API
         {
             get
             {
-                _proxy = object.ReferenceEquals(null, _proxy) ? WrapperServices<ThirdPartyServices>.Wrap() : _proxy;
+                _proxy = _proxy ?? WrapperServices<ThirdPartyServices>.Wrap();
                 return _proxy;
             }
         }
