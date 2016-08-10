@@ -45,7 +45,13 @@ namespace ONEbook.NG2.API.DTO
         /// <summary>
         /// Message site id of customer. SMA is null. Member is 4100300.
         /// </summary>
-        public string SiteId { get; set; }
+        private string SiteId
+        {
+            get
+            {
+                return RoleId != 1 ? null : "4100300";
+            }
+        }
 
         /// <summary>
         /// Currency of customer.

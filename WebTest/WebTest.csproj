@@ -145,6 +145,8 @@
     <Content Include="Areas\Logs\APILoggerConnectionStrings.config" />
     <Content Include="Areas\Logs\APILoggerConnectionStrings.pro.config" />
     <Content Include="Areas\Logs\APILoggerConnectionStrings.mnl.config" />
+    <Content Include="Areas\Logs\APILoggerConnectionStrings.sit.config" />
+    <Content Include="Areas\Logs\APILoggerConnectionStrings.uat.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
