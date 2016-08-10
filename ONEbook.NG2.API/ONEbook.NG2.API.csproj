@@ -93,6 +93,7 @@
     <Compile Include="DTO\Response.cs" />
     <Compile Include="DTO\Result.cs" />
     <Compile Include="DTO\ResultDetail.cs" />
+    <Compile Include="Interface\IThirdPartyServices.cs" />
     <Compile Include="Log\APILogger.cs" />
     <Compile Include="Log\ProxyServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,13 +1,14 @@
 ﻿using ONEbook.NG2.API.DTO;
+using ONEbook.NG2.API.Interface;
 
 namespace ONEbook.NG2.API
 {
     /// <summary>
     /// Service for system to interact with 3rd.
     /// </summary>
-    public sealed class Services
+    public sealed class Services : IThirdPartyServices
     {
-        private ThirdPartyServices _proxy;
+        private IThirdPartyServices _proxy;
 
         /// <summary>
         /// Initializes the instance of <see cref="Services"/> class.
@@ -17,7 +18,7 @@ namespace ONEbook.NG2.API
             _proxy = WrapperServices<ThirdPartyServices>.Wrap();            
         }
 
-        private ThirdPartyServices Instance
+        private IThirdPartyServices Instance
         {
             get
             {

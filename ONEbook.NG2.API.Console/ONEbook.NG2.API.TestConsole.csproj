@@ -91,11 +91,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Areas\ONEbook.NG2.API.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Areas\Logs\LogsConfiguration.config" />
+    <None Include="Areas\Logs\LogsConfiguration.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

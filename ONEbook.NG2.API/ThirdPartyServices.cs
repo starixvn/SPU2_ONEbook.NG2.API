@@ -1,9 +1,10 @@
 ﻿using System;
 using ONEbook.NG2.API.DTO;
+using ONEbook.NG2.API.Interface;
 
 namespace ONEbook.NG2.API
 {
-    internal class ThirdPartyServices : MarshalByRefObject
+    internal class ThirdPartyServices : MarshalByRefObject, IThirdPartyServices
     {
         public Response SyncCustomers(Request request)
         {

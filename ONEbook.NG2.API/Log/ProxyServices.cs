@@ -62,8 +62,10 @@ namespace ONEbook.NG2.API.Log
                 var result = methodInfo.Invoke(_decorated, methodCall.InArgs);                
                 var output = JsonConvert.SerializeObject(result);
                 var response = JsonConvert.DeserializeObject<Response>(output);
+                var returnCode = response.Result.ResultDetail.Count > 0 ? 
+                    (response.Result.ResultDetail[0].IsSuccess ? 0 : response.Result.ResultDetail[0].ErrorCode) : 0;
 
-                logger.LogResponse(logId, 0, output);
+                logger.LogResponse(logId, returnCode, output);
 
                 return new ReturnMessage(result, null, 0, methodCall.LogicalCallContext, methodCall);
             }
