@@ -22,7 +22,7 @@ namespace ONEbook.NG2.API.Log
                     param.Add("custid", custId);
                     param.Add("actionid", actionId);
                     param.Add("trackingvalue", request.ToString());
-                    param.Add("logid", 0);
+                    param.Add("logid", 0L);
 
                     objDb.AssignParamValues(param);
                     objDb.ExecuteNonQuery();
