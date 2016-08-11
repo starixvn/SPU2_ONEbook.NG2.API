@@ -8,7 +8,7 @@ namespace ONEbook.NG2.API.Log
 {
     internal class APILogger
     {
-        public int LogRequest(int systemId, int productId, int userId, string functionName, int custId, int actionId, XDocument request)
+        public long LogRequest(int systemId, int productId, int userId, string functionName, int custId, int actionId, XDocument request)
         {
             using (var objDb = new ObjectDb("WriteLog_UserLog_ExternalAPI_Ins"))
             {
@@ -27,7 +27,7 @@ namespace ONEbook.NG2.API.Log
                     objDb.AssignParamValues(param);
                     objDb.ExecuteNonQuery();
 
-                    return (int)objDb.GetParameterValue("logid");
+                    return (long)objDb.GetParameterValue("logid");
                 }
                 catch (Exception ex)
                 {
@@ -38,7 +38,7 @@ namespace ONEbook.NG2.API.Log
             }
         }
 
-        public bool LogResponse(int logId, int returnCode, string response)
+        public bool LogResponse(long logId, int returnCode, string response)
         {
             using (var objDb = new ObjectDb("WriteLog_UserLog_ExternalAPI_UpdResponse"))
             {

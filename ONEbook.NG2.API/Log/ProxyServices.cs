@@ -53,7 +53,7 @@ namespace ONEbook.NG2.API.Log
             var systemId = req.Auth.SiteId.Equals("3000") ? 2 : 3;
 
             var logger = new APILogger();
-            var logId = 0;
+            var logId = 0L;
 
             try
             {                
