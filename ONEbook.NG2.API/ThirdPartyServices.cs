@@ -30,7 +30,6 @@ namespace ONEbook.NG2.API
                     ErrorCode = success ? 0 : 1,
                     ErrorDescription = success ? string.Empty : "Synchronizes to 3rd failed. Timeout exception."
                 });
-
             }
             
             return response;

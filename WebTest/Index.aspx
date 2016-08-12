@@ -13,8 +13,12 @@
         <%= Newtonsoft.Json.JsonConvert.SerializeObject(new ONEbook.NG2.API.DTO.Response())%>
         <%new ONEbook.NG2.API.Services().SyncCustomers(new ONEbook.NG2.API.DTO.Request { Call = new ONEbook.NG2.API.DTO.Call { CustIds = new List<int> { 123456 }, UserId = 8 } }); %>
         <%
+            var currencies = new Dictionary<int, decimal>();
+            currencies.Add(20, 1.5M);
+            currencies.Add(22, 1.8M);
+
             ONEbook.NG2.API.Services service = new ONEbook.NG2.API.Services();
-            service.CheckIsSyncCustomers(new ONEbook.NG2.API.DTO.Request { Call = new ONEbook.NG2.API.DTO.Call { CustIds = new List<int> { 1540414 }, UserId = 16 } });
+            service.CheckIsSyncCustomers(new ONEbook.NG2.API.DTO.Request { Call = new ONEbook.NG2.API.DTO.Call { CustIds = new List<int> { 1540414 }, UserId = 16, Currencies = currencies } });
              %>
     </div>
     </form>
