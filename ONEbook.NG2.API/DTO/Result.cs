@@ -13,6 +13,7 @@ namespace ONEbook.NG2.API.DTO
         public Result()
         {
             ResultDetail = new List<ResultDetail>();
+            ResultDetail.Add(new ResultDetail());
         }
 
         /// <summary>
