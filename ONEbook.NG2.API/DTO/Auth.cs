@@ -15,18 +15,17 @@ namespace ONEbook.NG2.API.DTO
             var config = NG2Configuration.Instance;
             Login = config.Login;
             Password = config.Password;
-            SiteId = "2000";
         }
 
         /// <summary>
         /// Login info to access to 3rd API.
         /// </summary>
-        private string Login { get; set; }
+        internal string Login { get; set; }
 
         /// <summary>
         /// Secret token to access to 3rd API.
         /// </summary>
-        private string Password { get; set; }
+        internal string Password { get; set; }
 
         /// <summary>
         /// Message site id. NAP is 2000, Alpha is 3000.

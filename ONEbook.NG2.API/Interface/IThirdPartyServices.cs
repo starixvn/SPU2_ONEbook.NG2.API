@@ -13,9 +13,7 @@ namespace ONEbook.NG2.API.Interface
         Response KickoutMembers(Request request);
 
         Response ShowRiskAndForecast(Request request);
-
-        Response ShowSchedule(Request request);
-
+        
         Response SyncExchangeRates(Request request);
 
         Response ShowResult(Request request);

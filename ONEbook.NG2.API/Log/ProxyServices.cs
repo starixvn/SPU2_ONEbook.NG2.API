@@ -50,7 +50,7 @@ namespace ONEbook.NG2.API.Log
 
             var actionId = FunctionToId(methodCall.MethodName);
             var productId = 23;
-            var systemId = req.Auth.SiteId.Equals("3000") ? 2 : 3;
+            var systemId = 3;
 
             var logger = new APILogger();
             var logId = 0L;

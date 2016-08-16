@@ -76,17 +76,7 @@ namespace ONEbook.NG2.API
         {
             return Instance.ShowRiskAndForecast(request);
         }
-
-        /// <summary>
-        /// Shows schedule page.
-        /// </summary>
-        /// <param name="request">Request info.</param>
-        /// <returns>Response info.</returns>
-        public Response ShowSchedule(Request request)
-        {
-            return Instance.ShowSchedule(request);
-        }
-
+        
         /// <summary>
         /// Sync exchage rates.
         /// </summary>

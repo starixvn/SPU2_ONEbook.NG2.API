@@ -10,9 +10,9 @@ namespace ONEbook.NG2.API.Log
     {
         public long LogRequest(int systemId, int productId, int userId, string functionName, int custId, int actionId, XDocument request)
         {
-            using (var objDb = new ObjectDb("WriteLog_UserLog_ExternalAPI_Ins"))
+            try
             {
-                try
+                using (var objDb = new ObjectDb("WriteLog_UserLog_ExternalAPI_Ins"))
                 {
                     var param = new Hashtable();
                     param.Add("systemid", systemId);
@@ -29,20 +29,20 @@ namespace ONEbook.NG2.API.Log
 
                     return (long)objDb.GetParameterValue("logid");
                 }
-                catch (Exception ex)
-                {
-                    ex.Write();
-                }
-
-                return 0;   
             }
+            catch (Exception ex)
+            {
+                ex.Write();
+            }
+
+            return 0;
         }
 
         public bool LogResponse(long logId, int returnCode, string response)
         {
-            using (var objDb = new ObjectDb("WriteLog_UserLog_ExternalAPI_UpdResponse"))
+            try
             {
-                try
+                using (var objDb = new ObjectDb("WriteLog_UserLog_ExternalAPI_UpdResponse"))
                 {
                     var param = new Hashtable();
                     param.Add("logid", logId);
@@ -54,13 +54,13 @@ namespace ONEbook.NG2.API.Log
 
                     return true;
                 }
-                catch (Exception ex)
-                {
-                    ex.Write();
-                }
+            }
+            catch (Exception ex)
+            {
+                ex.Write();
+            }
 
-                return false;
-            }            
+            return false;
         }
     }
 }
