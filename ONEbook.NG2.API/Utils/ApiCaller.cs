@@ -9,7 +9,7 @@ namespace ONEbook.NG2.API.Utils
 {
     internal static class ApiCaller
     {
-        public static Response Invoke(ApiFunction.Func function, Request request)
+        public static Response Invoke(ApiFunc function, Request request)
         {
             try
             {
