@@ -9,56 +9,56 @@ namespace ONEbook.NG2.API
     {
         public Response SyncCustomers(Request request)
         {
-            var response = ApiCaller.Invoke(ApiFunc.CreateAccount, request);
+            var response = ApiCaller.Invoke<Request, Response>(ApiFunc.CreateAccount, request);
 
             return response;
         }
 
         public Response ChangeUsersGroup(Request request)
         {
-            var response = ApiCaller.Invoke(ApiFunc.ChangeSetting, request);
+            var response = ApiCaller.Invoke<Request, Response>(ApiFunc.ChangeSetting, request);
 
             return response;
         }
 
         public Response CheckIsSyncCustomers(Request request)
         {
-            var response = ApiCaller.Invoke(ApiFunc.CheckIsSyncCustomers, request);
+            var response = ApiCaller.Invoke<Request, Response>(ApiFunc.CheckIsSyncCustomers, request);
 
             return response;
         }
 
         public Response KickoutMembers(Request request)
         {
-            var response = ApiCaller.Invoke(ApiFunc.KickOutMember, request);
+            var response = ApiCaller.Invoke<Request, Response>(ApiFunc.KickOutMember, request);
 
             return response;
         }
 
         public Response ShowRiskAndForecast(Request request)
         {
-            var response = ApiCaller.Invoke(ApiFunc.ShowRiskAndForecast, request);
+            var response = ApiCaller.Invoke<Request, Response>(ApiFunc.ShowRiskAndForecast, request);
 
             return response;
         }
         
         public Response SyncExchangeRates(Request request)
         {
-            var response = ApiCaller.Invoke(ApiFunc.SyncExchangeRate, request);
+            var response = ApiCaller.Invoke<Request, Response>(ApiFunc.SyncExchangeRate, request);
 
             return response;
         }
 
         public Response ShowResult(Request request)
         {
-            var response = ApiCaller.Invoke(ApiFunc.ShowResult, request);
+            var response = ApiCaller.Invoke<Request, Response>(ApiFunc.ShowResult, request);
 
             return response;
         }
 
         public Response ShowTicketResult(Request request)
         {
-            var response = ApiCaller.Invoke(ApiFunc.ShowTicketResult, request);
+            var response = ApiCaller.Invoke<Request, Response>(ApiFunc.ShowTicketResult, request);
 
             return response;
         }

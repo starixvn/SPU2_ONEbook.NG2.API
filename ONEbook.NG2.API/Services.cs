@@ -8,22 +8,22 @@ namespace ONEbook.NG2.API
     /// </summary>
     public sealed class Services : IThirdPartyServices
     {
-        private IThirdPartyServices _proxy;
+        private IThirdPartyServices _service;
 
         /// <summary>
         /// Initializes the instance of <see cref="Services"/> class.
         /// </summary>
         public Services()
         {
-            _proxy = WrapperServices<ThirdPartyServices>.Wrap();            
+            _service = new ThirdPartyServices();
         }
 
         private IThirdPartyServices Instance
         {
             get
             {
-                _proxy = _proxy ?? WrapperServices<ThirdPartyServices>.Wrap();
-                return _proxy;
+                _service = _service ?? new ThirdPartyServices();
+                return _service;
             }
         }
                 

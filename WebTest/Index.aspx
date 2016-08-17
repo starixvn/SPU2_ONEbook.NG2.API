@@ -11,7 +11,7 @@
     <div>
         <%= Newtonsoft.Json.JsonConvert.SerializeObject(new ONEbook.NG2.API.DTO.Request())%><br />
         <%= Newtonsoft.Json.JsonConvert.SerializeObject(new ONEbook.NG2.API.DTO.Response())%>
-        <%= Newtonsoft.Json.JsonConvert.SerializeObject(new ONEbook.NG2.API.Services().SyncCustomers(new ONEbook.NG2.API.DTO.Request { Call = new ONEbook.NG2.API.DTO.Call { CustIds = new List<int> { 123456 }, UserId = 8 } })) %>
+        <%= Newtonsoft.Json.JsonConvert.SerializeObject(new ONEbook.NG2.API.Services().SyncCustomers(new ONEbook.NG2.API.DTO.Request { Auth = new ONEbook.NG2.API.DTO.Auth { SiteId = "2000" }, Call = new ONEbook.NG2.API.DTO.Call { CustIds = new List<int> { 123456 }, UserId = 8 } })) %>
         <%
             var currencies = new Dictionary<int, decimal>();
             currencies.Add(20, 1.5M);

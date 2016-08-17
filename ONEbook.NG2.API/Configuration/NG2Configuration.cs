@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 
 namespace ONEbook.NG2.API.Configuration
 {
@@ -64,6 +65,12 @@ namespace ONEbook.NG2.API.Configuration
         public string Success
         {
             get { return base["Success"] as string; }
+        }
+
+        [ConfigurationProperty("ProductId", DefaultValue = 23, IsRequired = false)]
+        public int ProductId
+        {
+            get { return Convert.ToInt32(base["ProductId"]); }
         }
     }
 }

@@ -1,48 +1,125 @@
 ﻿using System;
 using System.IO;
 using System.Net;
+using System.Runtime.Remoting;
+using System.Runtime.Serialization.Json;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Xml;
+using System.Xml.Linq;
 using Fanex.Module.Logs.Services;
 using ONEbook.NG2.API.Configuration;
-using ONEbook.NG2.API.DTO;
+using ONEbook.NG2.API.Log;
 
 namespace ONEbook.NG2.API.Utils
 {
     internal static class ApiCaller
     {
-        public static Response Invoke(ApiFunc function, Request request)
+        /// <summary>
+        /// Invokes 3rd API.
+        /// </summary>
+        /// <typeparam name="TRequest">Request object.</typeparam>
+        /// <typeparam name="TResponse">Response object.</typeparam>
+        /// <param name="function">API function enum.</param>
+        /// <param name="request">Request param.</param>
+        /// <returns></returns>
+        public static TResponse Invoke<TRequest, TResponse>(ApiFunc function, TRequest request)
         {
+            var logId = 0L;
+            var logger = new APILogger();
+            
             try
             {
-                var config = NG2Configuration.Instance;
-                var webRequest = (HttpWebRequest)WebRequest.Create(config.Url + "/" + function.ToString());
-                webRequest.Method = "POST";
-                webRequest.ContentType = "application/json";
-                webRequest.UserAgent = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)";
-
                 var param = ApiJsonConvert.SerializeObject(request, new ApiContractResolver());
-                webRequest.ContentLength = param.Length;
-                
-                using (var sw = new StreamWriter(webRequest.GetRequestStream()))
-                {
-                    sw.Write(param);
-                }
+                var xml = JsonToXml(param);
+                var actionId = FunctionToId(function.ToString());
+                var systemId = GetPropertyValue(param, "SiteId") == 3000 ? 2 : 3;
+                var userId = GetPropertyValue(param, "UserId");
+                var custId = GetPropertyValue(param, "CustId");
+                var result = string.Empty;  
 
-                var result = string.Empty;
+                logId = logger.LogRequest(systemId, NG2Configuration.Instance.ProductId, userId, function.ToString(), custId, actionId, xml);
+
+                var webRequest = CreateRequest<TRequest>(function, request);
                 using (var sr = new StreamReader(((HttpWebResponse)webRequest.GetResponse()).GetResponseStream()))
                 {
                     result = sr.ReadToEnd();
                 }
 
-                var output = ApiJsonConvert.DeserializeObject<Response>(result, new ApiContractResolver());
+                logger.LogResponse(logId, GetPropertyValue(result, "ErrorCode"), result);
 
-                return output;
+                return ApiJsonConvert.DeserializeObject<TResponse>(result, new ApiContractResolver());
             }
-            catch (Exception ex)
+            catch (RemotingTimeoutException te)
             {
-                ex.Write();
-
-                return new Response();
+                logger.LogResponse(logId, (int)ApiError.RemotingTimeoutException, te.ToString());
+                te.Write();
             }
+            catch (RemotingException re)
+            {
+                logger.LogResponse(logId, (int)ApiError.RemotingException, re.ToString());
+                re.Write();
+            }
+            catch (Exception e)
+            {
+                logger.LogResponse(logId, (int)ApiError.Exception, e.ToString());
+                e.Write();
+            }
+
+            return Activator.CreateInstance<TResponse>();
+        }
+
+        private static XDocument JsonToXml(string jsonString)
+        {
+            using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(jsonString)))
+            {
+                var quotas = new XmlDictionaryReaderQuotas();
+                return XDocument.Load(JsonReaderWriterFactory.CreateJsonReader(stream, quotas));
+            }
+        }
+
+        private static int FunctionToId(string functionName)
+        {
+            int length = functionName.Length;
+            int num = 0;
+            for (int index = 1; index <= length; ++index)
+            {
+                num += (int)functionName[length - index] + index;
+            }
+
+            return num;
+        }
+
+        private static HttpWebRequest CreateRequest<TRequest>(ApiFunc function, TRequest request)
+        {
+            var webRequest = (HttpWebRequest)WebRequest.Create(NG2Configuration.Instance.Url + "/" + function.ToString());
+            var param = ApiJsonConvert.SerializeObject(request, new ApiContractResolver());
+
+            webRequest.Method = "POST";
+            webRequest.ContentType = "application/json";
+            webRequest.UserAgent = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)";
+            webRequest.ContentLength = param.Length;
+
+            using (var sw = new StreamWriter(webRequest.GetRequestStream()))
+            {
+                sw.Write(param);
+            }
+
+            return webRequest;
+        }
+
+        private static int GetPropertyValue(string input, string propertyName)
+        {
+            var pattern = "(\"" + propertyName + "\":)([^\r\n][0-9]+)";
+            var val = 0;
+            var regexMatch = Regex.Match(input, pattern, RegexOptions.IgnoreCase);
+
+            if (regexMatch.Success)
+            {
+                val = Convert.ToInt32(Regex.Replace(regexMatch.Groups[2].ToString(), @"[^a-zA-Z0-9_.]+", string.Empty, RegexOptions.Compiled));
+            }
+
+            return val;
         }
     }
 }

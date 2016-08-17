@@ -11,7 +11,9 @@ using System.Xml;
 using System.Xml.Linq;
 using Fanex.Module.Logs.Services;
 using Newtonsoft.Json;
+using ONEbook.NG2.API.Configuration;
 using ONEbook.NG2.API.DTO;
+using ONEbook.NG2.API.Utils;
 
 namespace ONEbook.NG2.API.Log
 {
@@ -42,15 +44,15 @@ namespace ONEbook.NG2.API.Log
         [SecurityPermissionAttribute(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.Infrastructure)]
         public override IMessage Invoke(IMessage msg)
         {
+            var config = NG2Configuration.Instance;
             var methodCall = msg as IMethodCallMessage;
             var methodInfo = methodCall.MethodBase as MethodInfo;
             var json = JsonConvert.SerializeObject(methodCall.InArgs[0]);
             var req = JsonConvert.DeserializeObject<Request>(json);
             var xml = JsonToXml(json);
-
             var actionId = FunctionToId(methodCall.MethodName);
-            var productId = 23;
-            var systemId = 3;
+            var productId = config.ProductId;
+            var systemId = string.IsNullOrWhiteSpace(req.Auth.SiteId) || req.Auth.SiteId.Equals("2000") ? 3 : 2;
 
             var logger = new APILogger();
             var logId = 0L;
@@ -71,21 +73,21 @@ namespace ONEbook.NG2.API.Log
             }
             catch (RemotingTimeoutException te)
             {
-                logger.LogResponse(logId, 5008, te.ToString());
+                logger.LogResponse(logId, (int)ApiError.RemotingTimeoutException, te.ToString());
                 te.Write();
 
                 return new ReturnMessage(te, methodCall);
             }
             catch (RemotingException re)
             {
-                logger.LogResponse(logId, 5009, re.ToString());
+                logger.LogResponse(logId, (int)ApiError.RemotingException, re.ToString());
                 re.Write();
 
                 return new ReturnMessage(re, methodCall);
             }
             catch (Exception e)
             {
-                logger.LogResponse(logId, 5010, e.ToString());
+                logger.LogResponse(logId, (int)ApiError.Exception, e.ToString());
                 e.Write();
 
                 return new ReturnMessage(e, methodCall);
