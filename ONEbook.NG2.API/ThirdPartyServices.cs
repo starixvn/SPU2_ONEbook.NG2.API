@@ -1,4 +1,5 @@
 ﻿using System;
+using ONEbook.NG2.API.Configuration;
 using ONEbook.NG2.API.DTO;
 using ONEbook.NG2.API.Interface;
 using ONEbook.NG2.API.Utils;
@@ -10,6 +11,8 @@ namespace ONEbook.NG2.API
         public Response SyncCustomers(Request request)
         {
             var response = ApiCaller.Invoke<Request, Response>(ApiFunc.CreateAccount, request);
+            response.Result.ResultDetail[0].IsSuccess = 
+                NG2Configuration.Instance.Debug == "1" && NG2Configuration.Instance.Success == "1" ? true : response.Result.ResultDetail[0].IsSuccess;
 
             return response;
         }
@@ -17,6 +20,8 @@ namespace ONEbook.NG2.API
         public Response ChangeUsersGroup(Request request)
         {
             var response = ApiCaller.Invoke<Request, Response>(ApiFunc.ChangeSetting, request);
+            response.Result.ResultDetail[0].IsSuccess = 
+                NG2Configuration.Instance.Debug == "1" && NG2Configuration.Instance.Success == "1" ? true : response.Result.ResultDetail[0].IsSuccess;
 
             return response;
         }
