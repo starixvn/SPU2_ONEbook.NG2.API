@@ -2,7 +2,7 @@
 
 namespace ONEbook.NG2.API.Interface
 {
-    internal interface IThirdPartyServices
+    public interface IThirdPartyServices
     {
         Response SyncCustomers(Request request);
 
