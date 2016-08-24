@@ -1,4 +1,5 @@
-﻿using ONEbook.NG2.API.DTO;
+﻿using System;
+using ONEbook.NG2.API.DTO;
 using ONEbook.NG2.API.Interface;
 
 namespace ONEbook.NG2.API
@@ -105,6 +106,16 @@ namespace ONEbook.NG2.API
         public Response ShowTicketResult(Request request)
         {
             return Instance.ShowTicketResult(request);
-        }        
+        }
+
+        /// <summary>
+        /// Create currency to 3rd.
+        /// </summary>
+        /// <param name="request">Request info.</param>
+        /// <returns>Response info.</returns>
+        public Response CreateCurrency(Request request)
+        {
+            return Instance.CreateCurrency(request);
+        }
     }
 }

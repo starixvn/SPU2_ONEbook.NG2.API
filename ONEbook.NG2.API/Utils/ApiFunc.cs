@@ -40,6 +40,11 @@
         /// <summary>
         /// Shows ticket result of member.
         /// </summary>
-        ShowTicketResult
+        ShowTicketResult,
+
+        /// <summary>
+        /// Creates currency.
+        /// </summary>
+        CreateCurrency
     }
 }

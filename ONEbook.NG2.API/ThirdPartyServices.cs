@@ -67,5 +67,12 @@ namespace ONEbook.NG2.API
 
             return response;
         }
+
+        public Response CreateCurrency(Request request)
+        {
+            var response = ApiCaller.Invoke<Request, Response>(ApiFunc.CreateCurrency, request);
+
+            return response;
+        }
     }
 }

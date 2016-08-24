@@ -19,5 +19,7 @@ namespace ONEbook.NG2.API.Interface
         Response ShowResult(Request request);
 
         Response ShowTicketResult(Request request);
+
+        Response CreateCurrency(Request request);
     }
 }
