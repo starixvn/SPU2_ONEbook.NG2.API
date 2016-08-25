@@ -110,7 +110,7 @@ namespace ONEbook.NG2.API.Utils
 
         private static int GetPropertyValue(string input, string propertyName)
         {
-            var pattern = "(\"" + propertyName + "\":)([^\r\n][0-9]+)";
+            var pattern = "(\"" + propertyName + "\":)([^\r\n][^a-zA-Z0-9]+)";
             var val = 0;
             var regexMatch = Regex.Match(input, pattern, RegexOptions.IgnoreCase);
 
