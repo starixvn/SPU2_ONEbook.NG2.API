@@ -10,7 +10,6 @@ using System.Text;
 using System.Xml;
 using System.Xml.Linq;
 using Fanex.Module.Logs.Services;
-using Newtonsoft.Json;
 using ONEbook.NG2.API.Configuration;
 using ONEbook.NG2.API.DTO;
 using ONEbook.NG2.API.Utils;
@@ -47,8 +46,8 @@ namespace ONEbook.NG2.API.Log
             var config = NG2Configuration.Instance;
             var methodCall = msg as IMethodCallMessage;
             var methodInfo = methodCall.MethodBase as MethodInfo;
-            var json = JsonConvert.SerializeObject(methodCall.InArgs[0]);
-            var req = JsonConvert.DeserializeObject<Request>(json);
+            var json = ApiJsonConvert.SerializeObject(methodCall.InArgs[0]);
+            var req = ApiJsonConvert.DeserializeObject<Request>(json);
             var xml = JsonToXml(json);
             var actionId = FunctionToId(methodCall.MethodName);
             var productId = config.ProductId;
@@ -62,8 +61,8 @@ namespace ONEbook.NG2.API.Log
                 logId = logger.LogRequest(systemId, productId, req.Call.UserId, methodCall.MethodName, req.Call.CustIds[0], actionId, xml);
 
                 var result = methodInfo.Invoke(_decorated, methodCall.InArgs);                
-                var output = JsonConvert.SerializeObject(result);
-                var response = JsonConvert.DeserializeObject<Response>(output);
+                var output = ApiJsonConvert.SerializeObject(result);
+                var response = ApiJsonConvert.DeserializeObject<Response>(output);
                 var returnCode = response.Result.ResultDetail.Count > 0 ? 
                     (response.Result.ResultDetail[0].IsSuccess ? 0 : response.Result.ResultDetail[0].ErrorCode) : 0;
 

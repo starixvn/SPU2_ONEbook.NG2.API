@@ -1,18 +1,19 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
+﻿using System.Web.Script.Serialization;
 
 namespace ONEbook.NG2.API.Utils
 {
     internal static class ApiJsonConvert
     {
-        public static string SerializeObject(object value, IContractResolver resolver)
+        public static string SerializeObject(object value)
         {
-            return JsonConvert.SerializeObject(value, new JsonSerializerSettings() { ContractResolver = resolver, NullValueHandling = NullValueHandling.Ignore });
+            var serializer = new JavaScriptSerializer();
+            return serializer.Serialize(value);
         }
 
-        public static T DeserializeObject<T>(string value, IContractResolver resolver)
+        public static T DeserializeObject<T>(string value)
         {
-            return JsonConvert.DeserializeObject<T>(value, new JsonSerializerSettings() { ContractResolver = resolver, NullValueHandling = NullValueHandling.Ignore });
+            var serializer = new JavaScriptSerializer();
+            return serializer.Deserialize<T>(value);
         }
     }
 }

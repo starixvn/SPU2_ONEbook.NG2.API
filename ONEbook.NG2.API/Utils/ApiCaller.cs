@@ -30,7 +30,7 @@ namespace ONEbook.NG2.API.Utils
             
             try
             {
-                var param = ApiJsonConvert.SerializeObject(request, new ApiContractResolver());
+                var param = ApiJsonConvert.SerializeObject(request);
                 var xml = JsonToXml(param);
                 var actionId = FunctionToId(function.ToString());
                 var systemId = GetPropertyValue(param, "SiteId") == 3000 ? 2 : 3;
@@ -48,7 +48,7 @@ namespace ONEbook.NG2.API.Utils
 
                 logger.LogResponse(logId, GetPropertyValue(result, "ErrorCode"), result);
 
-                return ApiJsonConvert.DeserializeObject<TResponse>(result, new ApiContractResolver());
+                return ApiJsonConvert.DeserializeObject<TResponse>(result);
             }
             catch (RemotingTimeoutException te)
             {
@@ -93,7 +93,7 @@ namespace ONEbook.NG2.API.Utils
         private static HttpWebRequest CreateRequest<TRequest>(ApiFunc function, TRequest request)
         {
             var webRequest = (HttpWebRequest)WebRequest.Create(NG2Configuration.Instance.Url + "/" + function.ToString());
-            var param = ApiJsonConvert.SerializeObject(request, new ApiContractResolver());
+            var param = ApiJsonConvert.SerializeObject(request);
 
             webRequest.Method = "POST";
             webRequest.ContentType = "application/json";
