@@ -8,7 +8,7 @@
         /// <summary>
         /// Identify request is success or not.
         /// </summary>
-        public bool IsSuccess { get; internal set; }
+        public bool IsSuccess { get; set; }
 
         /// <summary>
         /// Customer id of action.
