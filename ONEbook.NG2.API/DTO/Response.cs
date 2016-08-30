@@ -16,6 +16,6 @@
         /// <summary>
         /// Result info of request.
         /// </summary>
-        public Result Result { get; internal set; }
+        public Result Result { get; set; }
     }
 }

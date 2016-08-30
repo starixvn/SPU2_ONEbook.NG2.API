@@ -19,6 +19,6 @@ namespace ONEbook.NG2.API.DTO
         /// <summary>
         /// Result detail of request.
         /// </summary>
-        public IList<ResultDetail> ResultDetail { get; internal set; }
+        public IList<ResultDetail> ResultDetail { get; set; }
     }
 }
