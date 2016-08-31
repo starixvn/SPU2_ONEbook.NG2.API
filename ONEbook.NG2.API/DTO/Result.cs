@@ -1,24 +1,33 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace ONEbook.NG2.API.DTO
 {
     /// <summary>
     /// Result info when calling API.
     /// </summary>
-    public class Result : BaseToken
+    internal class Result : IResult
     {
         /// <summary>
         /// Initializes the instance of <see cref="Result"/> class.
         /// </summary>
         public Result()
         {
-            ResultDetail = new List<ResultDetail>();
+            ResultDetail = new List<IResultDetail>();
             ResultDetail.Add(new ResultDetail());
+        }
+
+        public string Seq
+        {
+            get; set;
         }
 
         /// <summary>
         /// Result detail of request.
         /// </summary>
-        public IList<ResultDetail> ResultDetail { get; set; }
+        public IList<IResultDetail> ResultDetail
+        {
+            get; set;
+        }
     }
 }

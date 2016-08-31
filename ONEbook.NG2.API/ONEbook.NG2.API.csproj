@@ -84,12 +84,17 @@
   <ItemGroup>
     <Compile Include="Configuration\NG2Configuration.cs" />
     <Compile Include="DTO\Auth.cs" />
+    <Compile Include="DTO\IBaseTime.cs" />
     <Compile Include="DTO\BaseTime.cs" />
+    <Compile Include="DTO\IBaseToken.cs" />
     <Compile Include="DTO\BaseToken.cs" />
     <Compile Include="DTO\Call.cs" />
     <Compile Include="DTO\Request.cs" />
+    <Compile Include="DTO\IResponse.cs" />
     <Compile Include="DTO\Response.cs" />
+    <Compile Include="DTO\IResult.cs" />
     <Compile Include="DTO\Result.cs" />
+    <Compile Include="DTO\IResultDetail.cs" />
     <Compile Include="DTO\ResultDetail.cs" />
     <Compile Include="Interface\IThirdPartyServices.cs" />
     <Compile Include="Log\APILogger.cs" />

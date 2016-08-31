@@ -8,7 +8,7 @@ namespace ONEbook.NG2.API
 {
     internal class ThirdPartyServices : MarshalByRefObject, IThirdPartyServices
     {
-        public Response SyncCustomers(Request request)
+        public IResponse SyncCustomers(Request request)
         {
             var response = ApiCaller.Invoke<Request, Response>(ApiFunc.CreateAccount, request);
             response.Result.ResultDetail[0].IsSuccess = 
@@ -17,7 +17,7 @@ namespace ONEbook.NG2.API
             return response;
         }
 
-        public Response ChangeUsersGroup(Request request)
+        public IResponse ChangeUsersGroup(Request request)
         {
             var response = ApiCaller.Invoke<Request, Response>(ApiFunc.ChangeSetting, request);
             response.Result.ResultDetail[0].IsSuccess = 
@@ -26,49 +26,49 @@ namespace ONEbook.NG2.API
             return response;
         }
 
-        public Response CheckIsSyncCustomers(Request request)
+        public IResponse CheckIsSyncCustomers(Request request)
         {
             var response = ApiCaller.Invoke<Request, Response>(ApiFunc.CheckIsSyncCustomers, request);
 
             return response;
         }
 
-        public Response KickoutMembers(Request request)
+        public IResponse KickoutMembers(Request request)
         {
             var response = ApiCaller.Invoke<Request, Response>(ApiFunc.KickOutMember, request);
 
             return response;
         }
 
-        public Response ShowRiskAndForecast(Request request)
+        public IResponse ShowRiskAndForecast(Request request)
         {
             var response = ApiCaller.Invoke<Request, Response>(ApiFunc.ShowRiskAndForecast, request);
 
             return response;
         }
         
-        public Response SyncExchangeRates(Request request)
+        public IResponse SyncExchangeRates(Request request)
         {
             var response = ApiCaller.Invoke<Request, Response>(ApiFunc.SyncExchangeRate, request);
 
             return response;
         }
 
-        public Response ShowResult(Request request)
+        public IResponse ShowResult(Request request)
         {
             var response = ApiCaller.Invoke<Request, Response>(ApiFunc.ShowResult, request);
 
             return response;
         }
 
-        public Response ShowTicketResult(Request request)
+        public IResponse ShowTicketResult(Request request)
         {
             var response = ApiCaller.Invoke<Request, Response>(ApiFunc.ShowTicketResult, request);
 
             return response;
         }
 
-        public Response CreateCurrency(Request request)
+        public IResponse CreateCurrency(Request request)
         {
             var response = ApiCaller.Invoke<Request, Response>(ApiFunc.CreateCurrency, request);
 

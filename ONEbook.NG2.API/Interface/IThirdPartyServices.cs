@@ -4,22 +4,22 @@ namespace ONEbook.NG2.API.Interface
 {
     public interface IThirdPartyServices
     {
-        Response SyncCustomers(Request request);
+        IResponse SyncCustomers(Request request);
 
-        Response ChangeUsersGroup(Request request);
+        IResponse ChangeUsersGroup(Request request);
 
-        Response CheckIsSyncCustomers(Request request);
+        IResponse CheckIsSyncCustomers(Request request);
 
-        Response KickoutMembers(Request request);
+        IResponse KickoutMembers(Request request);
 
-        Response ShowRiskAndForecast(Request request);
-        
-        Response SyncExchangeRates(Request request);
+        IResponse ShowRiskAndForecast(Request request);
 
-        Response ShowResult(Request request);
+        IResponse SyncExchangeRates(Request request);
 
-        Response ShowTicketResult(Request request);
+        IResponse ShowResult(Request request);
 
-        Response CreateCurrency(Request request);
+        IResponse ShowTicketResult(Request request);
+
+        IResponse CreateCurrency(Request request);
     }
 }

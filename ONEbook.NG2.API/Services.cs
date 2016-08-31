@@ -33,7 +33,7 @@ namespace ONEbook.NG2.API
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public Response SyncCustomers(Request request)
+        public IResponse SyncCustomers(Request request)
         {         
             return Instance.SyncCustomers(request);
         }
@@ -43,7 +43,7 @@ namespace ONEbook.NG2.API
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public Response ChangeUsersGroup(Request request)
+        public IResponse ChangeUsersGroup(Request request)
         {
             return Instance.ChangeUsersGroup(request);
         }
@@ -53,7 +53,7 @@ namespace ONEbook.NG2.API
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public Response CheckIsSyncCustomers(Request request)
+        public IResponse CheckIsSyncCustomers(Request request)
         {
             return Instance.CheckIsSyncCustomers(request);
         }
@@ -63,7 +63,7 @@ namespace ONEbook.NG2.API
         /// </summary>
         /// <param name="request">Request info.</param>
         /// <returns>Response info.</returns>
-        public Response KickoutMembers(Request request)
+        public IResponse KickoutMembers(Request request)
         {
             return Instance.KickoutMembers(request);
         }
@@ -73,7 +73,7 @@ namespace ONEbook.NG2.API
         /// </summary>
         /// <param name="request">Request info.</param>
         /// <returns>Response info.</returns>
-        public Response ShowRiskAndForecast(Request request)
+        public IResponse ShowRiskAndForecast(Request request)
         {
             return Instance.ShowRiskAndForecast(request);
         }
@@ -83,7 +83,7 @@ namespace ONEbook.NG2.API
         /// </summary>
         /// <param name="request">Request info.</param>
         /// <returns>Response info.</returns>
-        public Response SyncExchangeRates(Request request)
+        public IResponse SyncExchangeRates(Request request)
         {
             return Instance.SyncExchangeRates(request);
         }
@@ -93,7 +93,7 @@ namespace ONEbook.NG2.API
         /// </summary>
         /// <param name="request">Request info.</param>
         /// <returns>Response info.</returns>
-        public Response ShowResult(Request request)
+        public IResponse ShowResult(Request request)
         {
             return Instance.ShowResult(request);
         }
@@ -103,7 +103,7 @@ namespace ONEbook.NG2.API
         /// </summary>
         /// <param name="request">Request info.</param>
         /// <returns>Response info.</returns>
-        public Response ShowTicketResult(Request request)
+        public IResponse ShowTicketResult(Request request)
         {
             return Instance.ShowTicketResult(request);
         }
@@ -113,7 +113,7 @@ namespace ONEbook.NG2.API
         /// </summary>
         /// <param name="request">Request info.</param>
         /// <returns>Response info.</returns>
-        public Response CreateCurrency(Request request)
+        public IResponse CreateCurrency(Request request)
         {
             return Instance.CreateCurrency(request);
         }

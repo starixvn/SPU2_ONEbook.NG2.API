@@ -1,9 +1,11 @@
-﻿namespace ONEbook.NG2.API.DTO
+﻿using System;
+
+namespace ONEbook.NG2.API.DTO
 {
     /// <summary>
     /// Response info when calling API.
     /// </summary>
-    public class Response : BaseTime
+    internal class Response : IResponse
     {
         /// <summary>
         /// Initializes the instance of <see cref="Response"/> class.
@@ -11,11 +13,20 @@
         public Response()
         {
             Result = new Result();
+            TimeStamp = DateTime.Now;
+        }
+
+        public DateTime TimeStamp
+        {
+            get; set;
         }
 
         /// <summary>
         /// Result info of request.
         /// </summary>
-        public Result Result { get; set; }
+        public IResult Result
+        {
+            get; set;
+        }
     }
 }

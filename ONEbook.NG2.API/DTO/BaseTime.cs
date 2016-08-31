@@ -5,7 +5,7 @@ namespace ONEbook.NG2.API.DTO
     /// <summary>
     /// Time stamp of request or response. DateTime.Now
     /// </summary>
-    public class BaseTime
+    public class BaseTime : IBaseTime
     {
         /// <summary>
         /// Initializes the instance of <see cref="BaseTime"/> class.
@@ -20,7 +20,7 @@ namespace ONEbook.NG2.API.DTO
         /// </summary>
         public DateTime TimeStamp
         {
-            get; internal set;
+            get; set;
         }
     }
 }

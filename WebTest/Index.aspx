@@ -11,7 +11,7 @@
     <div>
         <%-- <%= ONEbook.NG2.API.Utils.ApiJsonConvert.SerializeObject(new ONEbook.NG2.API.DTO.Request())%><br />
         <%= ONEbook.NG2.API.Utils.ApiJsonConvert.SerializeObject(new ONEbook.NG2.API.DTO.Response())%>
-        
+        --%>
        <%
             var response = new ONEbook.NG2.API.Services().SyncCustomers(new ONEbook.NG2.API.DTO.Request { Auth = new ONEbook.NG2.API.DTO.Auth { SiteId = "2000" }, Call = new ONEbook.NG2.API.DTO.Call { CustIds = new List<int> { 123456 }, UserId = 8 } });
             //var currencies = new Dictionary<int, decimal>();
@@ -22,7 +22,7 @@
             //service.CheckIsSyncCustomers(new ONEbook.NG2.API.DTO.Request { Call = new ONEbook.NG2.API.DTO.Call { CustIds = new List<int> { 1540414 }, UserId = 16, Currencies = currencies } });
              %>
 
-        <%= ONEbook.NG2.API.Utils.ApiJsonConvert.SerializeObject(response) %>--%>
+        <%= ONEbook.NG2.API.Utils.ApiJsonConvert.SerializeObject(response) %>
     </div>
     </form>
 </body>

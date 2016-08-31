@@ -2,7 +2,7 @@
 
 namespace ONEbook.NG2.API.Utils
 {
-    internal static class ApiJsonConvert
+    public static class ApiJsonConvert
     {
         public static string SerializeObject(object value)
         {
