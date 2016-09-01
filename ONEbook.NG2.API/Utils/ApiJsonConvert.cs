@@ -4,16 +4,22 @@ namespace ONEbook.NG2.API.Utils
 {
     public static class ApiJsonConvert
     {
+        private static JavaScriptSerializer _serializer;
+
+        static ApiJsonConvert()
+        {
+            _serializer = new JavaScriptSerializer();
+            _serializer.RegisterConverters(new JavaScriptConverter[] { new ApiDateTimeConverter(), new ApiDictionaryConverter() });
+        }
+
         public static string SerializeObject(object value)
         {
-            var serializer = new JavaScriptSerializer();
-            return serializer.Serialize(value);
+            return _serializer.Serialize(value);
         }
 
         public static T DeserializeObject<T>(string value)
-        {
-            var serializer = new JavaScriptSerializer();
-            return serializer.Deserialize<T>(value);
+        {            
+            return _serializer.Deserialize<T>(value);
         }
     }
 }
