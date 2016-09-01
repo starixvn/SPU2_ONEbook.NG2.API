@@ -1,13 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Reflection;
 using System.Web.Script.Serialization;
 
 namespace ONEbook.NG2.API.Utils
 {
     internal class ApiDictionaryConverter : JavaScriptConverter
     {
+        /// <summary>
+        /// Gets a collection of the supported types.
+        /// </summary>
+        public override IEnumerable<Type> SupportedTypes
+        {
+            get
+            {
+                return new Type[]
+                {
+                    typeof(Dictionary<int, decimal>)
+                };
+            }
+        }
+
         /// <summary>
         /// Converts the provided dictionary into a Dictionary object.
         /// </summary>
@@ -18,15 +30,24 @@ namespace ONEbook.NG2.API.Utils
         public override object Deserialize(IDictionary<string, object> dictionary, Type type, JavaScriptSerializer serializer)
         {
             // Validate arguments
-            if (dictionary == null) throw new ArgumentNullException("dictionary");
-            if (serializer == null) throw new ArgumentNullException("serializer");
+            if (dictionary == null)
+            {
+                throw new ArgumentNullException("dictionary");
+            }
+
+            if (serializer == null)
+            {
+                throw new ArgumentNullException("serializer");
+            }
 
             Dictionary<int, object> deserializedDictionary = new Dictionary<int, object>();
             foreach (KeyValuePair<string, object> entry in dictionary)
             {
                 int intKey = 0;
                 if (!int.TryParse(entry.Key, out intKey))
+                {
                     throw new InvalidOperationException("Cannot deserialize the dictionary because of invalid number string");
+                }
 
                 deserializedDictionary.Add(intKey, entry.Value);
             }
@@ -43,8 +64,15 @@ namespace ONEbook.NG2.API.Utils
         public override IDictionary<string, object> Serialize(object obj, JavaScriptSerializer serializer)
         {
             // Validate arguments
-            if (obj == null) throw new ArgumentNullException("obj");
-            if (serializer == null) throw new ArgumentNullException("serializer");
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+
+            if (serializer == null)
+            {
+                throw new ArgumentNullException("serializer");
+            }
 
             // Get the dictionary to convert
             Dictionary<int, decimal> dictionary = (Dictionary<int, decimal>)obj;
@@ -53,23 +81,11 @@ namespace ONEbook.NG2.API.Utils
             Dictionary<string, object> convertedDictionary = new Dictionary<string, object>();
 
             foreach (KeyValuePair<int, decimal> entry in dictionary)
+            {
                 convertedDictionary.Add(entry.Key.ToString(), entry.Value);
+            }
 
             return convertedDictionary;
-        }
-
-        /// <summary>
-        /// Gets a collection of the supported types.
-        /// </summary>
-        public override System.Collections.Generic.IEnumerable<Type> SupportedTypes
-        {
-            get
-            {
-                return new Type[]
-                {
-                    typeof(Dictionary<int, decimal>)
-                };
-            }
         }
     }
 }

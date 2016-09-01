@@ -14,8 +14,13 @@ namespace ONEbook.NG2.API.Utils
         public override IDictionary<string, object> Serialize(object obj, JavaScriptSerializer serializer)
         {
             Dictionary<string, object> result = new Dictionary<string, object>();
-            if (obj == null) return result;
+            if (obj == null)
+            {
+                return result;
+            }
+
             result["DateTime"] = ((DateTime)obj).ToString("yyyy-MM-dd HH:mm:ss.fff tt");
+
             return result;
         }
 
