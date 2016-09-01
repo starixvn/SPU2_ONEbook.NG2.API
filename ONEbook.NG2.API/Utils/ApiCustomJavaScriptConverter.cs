@@ -31,20 +31,26 @@ namespace ONEbook.NG2.API.Utils
         {
             T p = new T();
 
-            var props = typeof(T).GetProperties();
+            var props = typeof(T).GetProperties(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static);
 
             foreach (string key in dictionary.Keys)
             {
                 var prop = props.Where(t => t.Name == key).FirstOrDefault();
                 if (prop != null)
                 {
-                    if (prop.PropertyType == typeof(DateTime))
+                    try
                     {
-                        prop.SetValue(p, DateTime.ParseExact(dictionary[key] as string, DateFormat, DateTimeFormatInfo.InvariantInfo), null);
+                        if (prop.PropertyType == typeof(DateTime))
+                        {
+                            prop.SetValue(p, DateTime.ParseExact(dictionary[key] as string, DateFormat, DateTimeFormatInfo.InvariantInfo), null);
+                        }
+                        else
+                        {
+                            prop.SetValue(p, dictionary[key], null);
+                        }
                     }
-                    else
+                    catch
                     {
-                        prop.SetValue(p, dictionary[key], null);
                     }
                 }
             }
