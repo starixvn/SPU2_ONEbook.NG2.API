@@ -10,6 +10,6 @@ namespace ONEbook.NG2.API.DTO
         /// <summary>
         /// Current request or response time stamp.
         /// </summary>
-        DateTime TimeStamp { get; set; }
+        string TimeStamp { get; set; }
     }
 }

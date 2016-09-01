@@ -1,4 +1,7 @@
-﻿using System.Web.Script.Serialization;
+﻿using System;
+using System.Collections.Generic;
+using System.Web.Script.Serialization;
+using ONEbook.NG2.API.DTO;
 
 namespace ONEbook.NG2.API.Utils
 {
@@ -9,7 +12,13 @@ namespace ONEbook.NG2.API.Utils
         static ApiJsonConvert()
         {
             _serializer = new JavaScriptSerializer();
-            _serializer.RegisterConverters(new JavaScriptConverter[] { new ApiDateTimeConverter(), new ApiDictionaryConverter() });
+            _serializer.RegisterConverters(new JavaScriptConverter[] 
+            {
+                new ApiCustomJavaScriptConverter<DateTime>(),
+                new ApiCustomJavaScriptConverter<Call>(),
+                new ApiCustomJavaScriptConverter<Auth>(),
+                new ApiDictionaryConverter()
+            });
         }
 
         public static string SerializeObject(object value)

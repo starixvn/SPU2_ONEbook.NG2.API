@@ -12,7 +12,7 @@
         {
             Auth = new Auth();
             Call = new Call();
-            TimeStamp = System.DateTime.Now;
+            TimeStamp = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff tt");
         }
 
         /// <summary>

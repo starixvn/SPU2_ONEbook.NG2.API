@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Web.Script.Serialization;
 
 namespace ONEbook.NG2.API.Utils
@@ -20,7 +22,6 @@ namespace ONEbook.NG2.API.Utils
             }
 
             result["DateTime"] = ((DateTime)obj).ToString("yyyy-MM-dd HH:mm:ss.fff tt");
-
             return result;
         }
 

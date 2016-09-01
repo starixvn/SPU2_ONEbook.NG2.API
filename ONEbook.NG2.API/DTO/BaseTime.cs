@@ -12,13 +12,13 @@ namespace ONEbook.NG2.API.DTO
         /// </summary>
         public BaseTime()
         {
-            TimeStamp = DateTime.Now;
+            TimeStamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff tt");
         }
 
         /// <summary>
         /// Current time stamp of request or response.
         /// </summary>
-        public DateTime TimeStamp
+        public string TimeStamp
         {
             get; set;
         }

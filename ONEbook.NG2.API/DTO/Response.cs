@@ -13,10 +13,10 @@ namespace ONEbook.NG2.API.DTO
         public Response()
         {
             Result = new Result();
-            TimeStamp = DateTime.Now;
+            TimeStamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff tt");
         }
 
-        public DateTime TimeStamp
+        public string TimeStamp
         {
             get; set;
         }
