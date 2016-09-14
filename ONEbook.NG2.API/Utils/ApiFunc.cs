@@ -6,12 +6,7 @@
         /// Synchonizes customer to 3rd.
         /// </summary>
         CreateAccount,
-
-        /// <summary>
-        /// Changes user group commission.
-        /// </summary>
-        ChangeSetting,
-
+        
         /// <summary>
         /// Gets risk and forecast page url.
         /// </summary>
@@ -28,11 +23,6 @@
         CheckIsSyncCustomers,
 
         /// <summary>
-        /// Kicks member out of lobby game.
-        /// </summary>
-        KickOutMember,
-
-        /// <summary>
         /// Shows result of all sports by date.
         /// </summary>
         ShowResult,
@@ -45,6 +35,11 @@
         /// <summary>
         /// Creates currency.
         /// </summary>
-        CreateCurrency
+        CreateCurrency,
+
+        /// <summary>
+        /// Show detail tickets of Parlay.
+        /// </summary>
+        ShowParlayDetail
     }
 }

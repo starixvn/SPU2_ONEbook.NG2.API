@@ -32,8 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Fanex.Data, Version=0.5.404.63, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Fanex.Data.0.5.404.63\lib\net40\Fanex.Data.dll</HintPath>
+    <Reference Include="Fanex.Data, Version=0.5.404.59, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Fanex.Data.0.5.404.59\lib\net40\Fanex.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.Logging, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -84,22 +84,85 @@
   <ItemGroup>
     <Compile Include="Configuration\NG2Configuration.cs" />
     <Compile Include="DTO\Auth.cs" />
-    <Compile Include="DTO\IBaseTime.cs" />
+    <Compile Include="DTO\BaseResult.cs" />
+    <Compile Include="DTO\CheckIsSyncCustomer\Call.cs" />
+    <Compile Include="DTO\CheckIsSyncCustomer\AccountInfo.cs" />
+    <Compile Include="DTO\CheckIsSyncCustomer\AccountInfoResult.cs" />
+    <Compile Include="DTO\CheckIsSyncCustomer\Request.cs" />
+    <Compile Include="DTO\CheckIsSyncCustomer\Response.cs" />
+    <Compile Include="DTO\CheckIsSyncCustomer\Result.cs" />
+    <Compile Include="DTO\CreateAccount\AccountInfo.cs" />
+    <Compile Include="DTO\CreateAccount\AccountInfoResult.cs" />
+    <Compile Include="DTO\CreateAccount\Call.cs" />
+    <Compile Include="DTO\CreateAccount\Request.cs" />
+    <Compile Include="DTO\CreateAccount\Response.cs" />
+    <Compile Include="DTO\CreateAccount\Result.cs" />
     <Compile Include="DTO\BaseTime.cs" />
-    <Compile Include="DTO\IBaseToken.cs" />
     <Compile Include="DTO\BaseToken.cs" />
-    <Compile Include="DTO\Call.cs" />
-    <Compile Include="DTO\Request.cs" />
-    <Compile Include="DTO\IResponse.cs" />
-    <Compile Include="DTO\Response.cs" />
-    <Compile Include="DTO\IResult.cs" />
-    <Compile Include="DTO\Result.cs" />
-    <Compile Include="DTO\IResultDetail.cs" />
-    <Compile Include="DTO\ResultDetail.cs" />
+    <Compile Include="DTO\CreateCurrency\CurrencyInfo.cs" />
+    <Compile Include="DTO\CreateCurrency\Call.cs" />
+    <Compile Include="DTO\CreateCurrency\Request.cs" />
+    <Compile Include="DTO\CreateCurrency\Response.cs" />
+    <Compile Include="DTO\CreateCurrency\Result.cs" />
+    <Compile Include="DTO\ShowParlayDetail\Call.cs" />
+    <Compile Include="DTO\ShowParlayDetail\Request.cs" />
+    <Compile Include="DTO\ShowParlayDetail\Response.cs" />
+    <Compile Include="DTO\ShowParlayDetail\Result.cs" />
+    <Compile Include="DTO\ShowResult\Call.cs" />
+    <Compile Include="DTO\ShowResult\Request.cs" />
+    <Compile Include="DTO\ShowResult\Response.cs" />
+    <Compile Include="DTO\ShowResult\Result.cs" />
+    <Compile Include="DTO\ShowRiskAndForecast\Call.cs" />
+    <Compile Include="DTO\ShowRiskAndForecast\Request.cs" />
+    <Compile Include="DTO\ShowRiskAndForecast\Response.cs" />
+    <Compile Include="DTO\ShowRiskAndForecast\Result.cs" />
+    <Compile Include="DTO\ShowTicketResult\Call.cs" />
+    <Compile Include="DTO\ShowTicketResult\Request.cs" />
+    <Compile Include="DTO\ShowTicketResult\Response.cs" />
+    <Compile Include="DTO\ShowTicketResult\Result.cs" />
+    <Compile Include="DTO\SyncExchangeRate\Call.cs" />
+    <Compile Include="DTO\SyncExchangeRate\CurrencyInfo.cs" />
+    <Compile Include="DTO\SyncExchangeRate\Request.cs" />
+    <Compile Include="DTO\SyncExchangeRate\Response.cs" />
+    <Compile Include="DTO\SyncExchangeRate\Result.cs" />
     <Compile Include="Interface\IThirdPartyServices.cs" />
     <Compile Include="Log\APILogger.cs" />
-    <Compile Include="Log\ProxyServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\ErrorCode.vi-VN.Designer.cs">
+      <DependentUpon>ErrorCode.vi-VN.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\ErrorCode.zh-CN.Designer.cs">
+      <DependentUpon>ErrorCode.zh-CN.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\ErrorCode.zh-TW.Designer.cs">
+      <DependentUpon>ErrorCode.zh-TW.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\ErrorCode.th-TH.Designer.cs">
+      <DependentUpon>ErrorCode.th-TH.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\ErrorCode.ko-KR.Designer.cs">
+      <DependentUpon>ErrorCode.ko-KR.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\ErrorCode.ja-JP.Designer.cs">
+      <DependentUpon>ErrorCode.ja-JP.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\ErrorCode.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ErrorCode.resx</DependentUpon>
+    </Compile>
     <Compile Include="Services.cs" />
     <Compile Include="ThirdPartyServices.cs" />
     <Compile Include="Utils\ApiCaller.cs" />
@@ -109,12 +172,43 @@
     <Compile Include="Utils\ApiError.cs" />
     <Compile Include="Utils\ApiFunc.cs" />
     <Compile Include="Utils\ApiJsonConvert.cs" />
-    <Compile Include="WrapperServices.cs" />
+    <Compile Include="Utils\ApiResourceHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ErrorCode.vi-VN.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ErrorCode.vi-VN.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ErrorCode.zh-CN.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ErrorCode.zh-CN.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ErrorCode.zh-TW.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ErrorCode.zh-TW.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ErrorCode.th-TH.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ErrorCode.th-TH.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ErrorCode.ko-KR.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ErrorCode.ko-KR.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ErrorCode.ja-JP.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ErrorCode.ja-JP.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ErrorCode.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ErrorCode.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

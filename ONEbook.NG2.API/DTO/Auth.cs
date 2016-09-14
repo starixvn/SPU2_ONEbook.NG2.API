@@ -30,6 +30,6 @@ namespace ONEbook.NG2.API.DTO
         /// <summary>
         /// Message site id. NAP is 2000, Alpha is 3000.
         /// </summary>
-        public string SiteId { get; set; }
+        public int SiteId { get; set; }
     }
 }

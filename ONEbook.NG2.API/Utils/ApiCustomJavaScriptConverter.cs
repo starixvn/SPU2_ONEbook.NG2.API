@@ -40,6 +40,11 @@ namespace ONEbook.NG2.API.Utils
                 {
                     try
                     {
+                        if (object.ReferenceEquals(null, prop))
+                        {
+                            continue;
+                        }
+
                         if (prop.PropertyType == typeof(DateTime))
                         {
                             prop.SetValue(p, DateTime.ParseExact(dictionary[key] as string, DateFormat, DateTimeFormatInfo.InvariantInfo), null);

@@ -5,7 +5,7 @@ namespace ONEbook.NG2.API.DTO
     /// <summary>
     /// Token of request or response.
     /// </summary>
-    public class BaseToken : IBaseToken
+    public class BaseToken
     {
         /// <summary>
         /// Initializes the instance of <see cref="BaseToken"/> class.

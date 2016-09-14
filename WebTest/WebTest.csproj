@@ -155,7 +155,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Logs\APILoggerSpNames.xml" />
+    <Content Include="Areas\Logs\APILoggerSpNames.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="Index.aspx" />
     <Content Include="scripts\ai.0.15.0-build58334.js" />

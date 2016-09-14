@@ -22,10 +22,13 @@
            //service.CheckIsSyncCustomers(new ONEbook.NG2.API.DTO.Request { Call = new ONEbook.NG2.API.DTO.Call { CustIds = new List<int> { 1540414 }, UserId = 16, Currencies = currencies } });
            var request = new ONEbook.NG2.API.DTO.Request();
            request.Call.Currencies.Add(new KeyValuePair<int, decimal>(20, 3.5M));
-            %>
 
+           var response = new ONEbook.NG2.API.Services().SyncCustomers(request);
+
+            %> 
             
         <%= ONEbook.NG2.API.Utils.ApiJsonConvert.SerializeObject(request) %>
+        <%= ONEbook.NG2.API.Utils.ApiJsonConvert.SerializeObject(response) %>
     </div>
     </form>
 </body>

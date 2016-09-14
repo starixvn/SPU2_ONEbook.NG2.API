@@ -1,6 +1,4 @@
-﻿using System;
-using ONEbook.NG2.API.DTO;
-using ONEbook.NG2.API.Interface;
+﻿using ONEbook.NG2.API.Interface;
 
 namespace ONEbook.NG2.API
 {
@@ -33,19 +31,9 @@ namespace ONEbook.NG2.API
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public IResponse SyncCustomers(Request request)
+        public DTO.CreateAccount.Response SyncCustomers(DTO.CreateAccount.Request request)
         {         
             return Instance.SyncCustomers(request);
-        }
-
-        /// <summary>
-        /// Changes users's group commission for member level.
-        /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
-        public IResponse ChangeUsersGroup(Request request)
-        {
-            return Instance.ChangeUsersGroup(request);
         }
 
         /// <summary>
@@ -53,19 +41,9 @@ namespace ONEbook.NG2.API
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public IResponse CheckIsSyncCustomers(Request request)
+        public DTO.CheckIsSyncCustomer.Response CheckIsSyncCustomers(DTO.CheckIsSyncCustomer.Request request)
         {
             return Instance.CheckIsSyncCustomers(request);
-        }
-
-        /// <summary>
-        /// Kick out members when change member's group.
-        /// </summary>
-        /// <param name="request">Request info.</param>
-        /// <returns>Response info.</returns>
-        public IResponse KickoutMembers(Request request)
-        {
-            return Instance.KickoutMembers(request);
         }
 
         /// <summary>
@@ -73,7 +51,7 @@ namespace ONEbook.NG2.API
         /// </summary>
         /// <param name="request">Request info.</param>
         /// <returns>Response info.</returns>
-        public IResponse ShowRiskAndForecast(Request request)
+        public DTO.ShowRiskAndForecast.Response ShowRiskAndForecast(DTO.ShowRiskAndForecast.Request request)
         {
             return Instance.ShowRiskAndForecast(request);
         }
@@ -83,7 +61,7 @@ namespace ONEbook.NG2.API
         /// </summary>
         /// <param name="request">Request info.</param>
         /// <returns>Response info.</returns>
-        public IResponse SyncExchangeRates(Request request)
+        public DTO.SyncExchangeRate.Response SyncExchangeRates(DTO.SyncExchangeRate.Request request)
         {
             return Instance.SyncExchangeRates(request);
         }
@@ -93,7 +71,7 @@ namespace ONEbook.NG2.API
         /// </summary>
         /// <param name="request">Request info.</param>
         /// <returns>Response info.</returns>
-        public IResponse ShowResult(Request request)
+        public DTO.ShowResult.Response ShowResult(DTO.ShowResult.Request request)
         {
             return Instance.ShowResult(request);
         }
@@ -103,7 +81,7 @@ namespace ONEbook.NG2.API
         /// </summary>
         /// <param name="request">Request info.</param>
         /// <returns>Response info.</returns>
-        public IResponse ShowTicketResult(Request request)
+        public DTO.ShowTicketResult.Response ShowTicketResult(DTO.ShowTicketResult.Request request)
         {
             return Instance.ShowTicketResult(request);
         }
@@ -113,9 +91,19 @@ namespace ONEbook.NG2.API
         /// </summary>
         /// <param name="request">Request info.</param>
         /// <returns>Response info.</returns>
-        public IResponse CreateCurrency(Request request)
+        public DTO.CreateCurrency.Response CreateCurrency(DTO.CreateCurrency.Request request)
         {
             return Instance.CreateCurrency(request);
+        }
+
+        /// <summary>
+        /// Shows parlay details.
+        /// </summary>
+        /// <param name="request">Request info</param>
+        /// <returns>Response info.</returns>
+        public DTO.ShowParlayDetail.Response ShowParlayDetail(DTO.ShowParlayDetail.Request request)
+        {
+            return Instance.ShowParlayDetail(request);
         }
     }
 }
