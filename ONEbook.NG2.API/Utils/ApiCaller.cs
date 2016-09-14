@@ -35,7 +35,7 @@ namespace ONEbook.NG2.API.Utils
                 var actionId = FunctionToId(function.ToString());
                 var systemId = GetPropertyValue(param, "SiteId") == 3000 ? 2 : 3;
                 var userId = GetPropertyValue(param, "UserId");
-                var custId = GetPropertyValue(param, "CustId");
+                var custId = GetPropertyValue(param, "ObCustId");
                 var result = string.Empty;  
 
                 logId = logger.LogRequest(systemId, NG2Configuration.Instance.ProductId, userId, function.ToString(), custId, actionId, xml);
