@@ -20,15 +20,22 @@
 
            //ONEbook.NG2.API.Services service = new ONEbook.NG2.API.Services();
            //service.CheckIsSyncCustomers(new ONEbook.NG2.API.DTO.Request { Call = new ONEbook.NG2.API.DTO.Call { CustIds = new List<int> { 1540414 }, UserId = 16, Currencies = currencies } });
-           var request = new ONEbook.NG2.API.DTO.Request();
-           request.Call.Currencies.Add(new KeyValuePair<int, decimal>(20, 3.5M));
+           var request = new ONEbook.NG2.API.DTO.CreateAccount.Request();
+           var service = new ONEbook.NG2.API.Services();
+           
+           service.CheckIsSyncCustomers(new ONEbook.NG2.API.DTO.CheckIsSyncCustomer.Request());
+           service.CreateCurrency(new ONEbook.NG2.API.DTO.CreateCurrency.Request());
+           service.ShowParlayDetail(new ONEbook.NG2.API.DTO.ShowParlayDetail.Request());
+           service.ShowResult(new ONEbook.NG2.API.DTO.ShowResult.Request());
+           service.ShowRiskAndForecast(new ONEbook.NG2.API.DTO.ShowRiskAndForecast.Request());
+           service.ShowTicketResult(new ONEbook.NG2.API.DTO.ShowTicketResult.Request());
+           service.SyncCustomers(new ONEbook.NG2.API.DTO.CreateAccount.Request());
+           service.SyncExchangeRates(new ONEbook.NG2.API.DTO.SyncExchangeRate.Request());
 
-           var response = new ONEbook.NG2.API.Services().SyncCustomers(request);
 
             %> 
             
         <%= ONEbook.NG2.API.Utils.ApiJsonConvert.SerializeObject(request) %>
-        <%= ONEbook.NG2.API.Utils.ApiJsonConvert.SerializeObject(response) %>
     </div>
     </form>
 </body>
