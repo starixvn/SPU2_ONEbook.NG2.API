@@ -129,7 +129,7 @@ namespace ONEbook.NG2.API.Utils
 
         private static string SetPropertyValue(string input, string propertyName, int errorCode, string language)
         {
-            var pattern = "(\"" + propertyName + "\":)([^\r\n][a-zA-Z0-9,()?.! ]+)";
+            var pattern = "(\"" + propertyName + "\":)([^\r\n][a-zA-Z0-9,[]{}()?.! ]+)";
             var val = string.Empty;
             var regexMatch = Regex.Match(input, pattern, RegexOptions.IgnoreCase);
 
