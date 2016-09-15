@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Runtime.Remoting;
 using System.Runtime.Serialization.Json;
@@ -30,13 +31,14 @@ namespace ONEbook.NG2.API.Utils
             
             try
             {
+                dynamic req = request;
                 var param = ApiJsonConvert.SerializeObject(request);
                 var xml = JsonToXml(param);
                 var actionId = FunctionToId(function.ToString());
-                var systemId = GetPropertyValue(param, "SiteId") == 3000 ? 2 : 3;
-                var userId = GetPropertyValue(param, "UserId");
+                var systemId = req.Auth.SiteId;
+                var userId = req.UserId;
                 var custId = GetPropertyValue(param, "ObCustId");
-                var result = string.Empty;  
+                var result = string.Empty;
 
                 logId = logger.LogRequest(systemId, NG2Configuration.Instance.ProductId, userId, function.ToString(), custId, actionId, xml);
 
@@ -110,7 +112,7 @@ namespace ONEbook.NG2.API.Utils
 
         private static int GetPropertyValue(string input, string propertyName)
         {
-            var pattern = "(\"" + propertyName + "\":)([^\r\n][^a-zA-Z0-9]+)";
+            var pattern = "(\"" + propertyName + "\":)([^\r\n][0-9]+)";
             var val = 0;
             var regexMatch = Regex.Match(input, pattern, RegexOptions.IgnoreCase);
 

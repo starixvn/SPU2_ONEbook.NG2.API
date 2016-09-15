@@ -3,7 +3,7 @@
     /// <summary>
     /// Result info mapping with cust id.
     /// </summary>
-    public class AccountInfoResult
+    public class AccountInfoResult : BaseResult
     {
         /// <summary>
         /// Customer id.

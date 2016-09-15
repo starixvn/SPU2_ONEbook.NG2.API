@@ -13,14 +13,25 @@ namespace ONEbook.NG2.API.DTO
         public BaseTime()
         {
             TimeStamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff tt");
+            Language = "en-US";
         }
 
         /// <summary>
-        /// Current time stamp of request or response.
+        /// Current time stamp of request or response. No need to input.
         /// </summary>
         public string TimeStamp
         {
             get; set;
         }
+
+        /// <summary>
+        /// Current login user id of each system.
+        /// </summary>
+        public int UserId { get; set; }
+
+        /// <summary>
+        /// Current culture language. ex: en-US, vi-VN,...
+        /// </summary>
+        public string Language { get; set; }
     }
 }

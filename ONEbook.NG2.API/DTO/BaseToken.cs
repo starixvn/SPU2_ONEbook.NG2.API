@@ -16,7 +16,7 @@ namespace ONEbook.NG2.API.DTO
         }
 
         /// <summary>
-        /// Token to validate the request or response.
+        /// Token to validate the request or response. No need to input.
         /// </summary>
         public string Seq { get; set; }
     }
