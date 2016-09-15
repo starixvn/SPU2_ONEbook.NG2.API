@@ -24,11 +24,6 @@
             {
                 return ErrorCode == 0;
             }
-
-            set
-            {
-                value = ErrorCode == 0;
-            }
         }
     }
 }

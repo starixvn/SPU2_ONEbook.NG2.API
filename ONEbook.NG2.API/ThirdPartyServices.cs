@@ -14,6 +14,12 @@ namespace ONEbook.NG2.API
             response.Result.ErrorCode = 
                 NG2Configuration.Instance.Debug == "1" && NG2Configuration.Instance.Success == "1" ? 0 : response.Result.ErrorCode;
 
+            foreach (var item in response.Result.AccountArray)
+            {
+                item.IsCreated = NG2Configuration.Instance.Debug == "1" && NG2Configuration.Instance.Success == "1" ? 1 : item.IsCreated;
+                item.ErrorCode = NG2Configuration.Instance.Debug == "1" && NG2Configuration.Instance.Success == "1" ? 0 : item.ErrorCode;
+            }
+
             return response;
         }
         

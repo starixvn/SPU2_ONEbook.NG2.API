@@ -21,7 +21,7 @@ namespace ONEbook.NG2.API.DTO
         /// </summary>
         public string TimeStamp
         {
-            get; set;
+            get; internal set;
         }
 
         /// <summary>

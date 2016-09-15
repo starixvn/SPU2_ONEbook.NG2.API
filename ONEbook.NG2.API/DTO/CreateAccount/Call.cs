@@ -33,7 +33,13 @@ namespace ONEbook.NG2.API.DTO.CreateAccount
         /// <summary>
         /// Message site id of customer. SMA is 0. Member is 4100300.
         /// </summary>
-        public int SiteId { get; set; }
+        public int SiteId
+        {
+            get
+            {
+                return Level != 1 ? 0 : 4100300;
+            }
+        }
 
         /// <summary>
         /// List of customers need to be synced.
