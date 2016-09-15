@@ -13,6 +13,6 @@
         /// <summary>
         /// Is created at 3rd.
         /// </summary>
-        public bool IsCreated { get; set; }
+        public int IsCreated { get; set; }
     }
 }
