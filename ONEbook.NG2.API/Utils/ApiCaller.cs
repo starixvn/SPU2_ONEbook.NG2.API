@@ -39,12 +39,7 @@ namespace ONEbook.NG2.API.Utils
                 var userId = req.UserId;
                 var custId = GetPropertyValue(param, "ObCustId");
                 var result = string.Empty;
-
-                var response = new DTO.CreateAccount.Response();
-                response.Result.ErrorCode = 9001;
-                var input = ApiJsonConvert.SerializeObject(response);
-                input = SetPropertyValue(input, "ErrorDescription", 9001, req.Language);
-
+                
                 logId = logger.LogRequest(systemId, NG2Configuration.Instance.ProductId, userId, function.ToString(), custId, actionId, xml);
 
                 var webRequest = CreateRequest<TRequest>(function, request);
@@ -134,19 +129,21 @@ namespace ONEbook.NG2.API.Utils
 
         private static string SetPropertyValue(string input, string propertyName, int errorCode, string language)
         {
-            var pattern = "(\"" + propertyName + "\":)([^\r\n][a-zA-Z0-9]+)";
+            var pattern = "(\"" + propertyName + "\":)([^\r\n][a-zA-Z0-9,()?.! ]+)";
             var val = string.Empty;
             var regexMatch = Regex.Match(input, pattern, RegexOptions.IgnoreCase);
 
             if (regexMatch.Success)
             {
-                val = Regex.Replace(regexMatch.Groups[2].ToString(), @"[^a-zA-Z0-9_.]+", string.Empty, RegexOptions.Compiled);
+                val = regexMatch.Groups[2].ToString().Replace("\"", string.Empty);
             }
 
             var resource = ApiResourceHelper.GetResource(((ApiError)errorCode).ToString(), language);
             var replacement = string.IsNullOrWhiteSpace(resource) ? val : resource;
 
-            return input.Replace(val, replacement);
+            input = input.Replace(val, replacement);
+
+            return input;
         }
     }
 }
