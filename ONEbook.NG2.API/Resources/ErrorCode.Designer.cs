@@ -97,6 +97,15 @@ namespace ONEbook.NG2.API.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An error has occurred. Please contact CSD for details. [2001].
+        /// </summary>
+        public static string AuthenFailed {
+            get {
+                return ResourceManager.GetString("AuthenFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An error has occurred. Please contact CSD for details. [1003].
         /// </summary>
         public static string AuthenticationCredentialsIncorrect {
@@ -111,6 +120,15 @@ namespace ONEbook.NG2.API.Resources {
         public static string BetLimitChanged {
             get {
                 return ResourceManager.GetString("BetLimitChanged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Currency is not exist in 3rd. [9001].
+        /// </summary>
+        public static string CurrencyNotExist {
+            get {
+                return ResourceManager.GetString("CurrencyNotExist", resourceCulture);
             }
         }
         

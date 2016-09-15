@@ -13,6 +13,7 @@
         ParameterIsIncorrect = 1007,
         InvalidSequence = 1008,
         DuplicateRequest = 1009,
+        AuthenFailed = 2001,
         AccountLocked = 2002,
         AccountNotExist = 2003,
         AccountIsBlacklisted = 2005,
@@ -44,6 +45,7 @@
         DBError = 5004,
         Exception = 5008,
         RemotingException = 5009,
-        RemotingTimeoutException = 5010
+        RemotingTimeoutException = 5010,
+        CurrencyNotExist = 9001
     }
 }

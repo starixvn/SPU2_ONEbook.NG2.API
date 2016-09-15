@@ -124,91 +124,96 @@
     <value>Tài khoản của bạn bị đóng. Vui lòng liên hệ với cấp trên của bạn trên để biết thêm chi tiết. [2002]</value>
   </data>
   <data name="AccountNotExist" xml:space="preserve">
-    <value>An error has occurred. Please contact CSD for details. [2003]</value>
+    <value>Đã xảy ra lỗi. Vui lòng liên hệ bộ phận chăm sóc khách hàng để biết thêm chi tiết. [2003]</value>
   </data>
   <data name="AccountSuspened" xml:space="preserve">
-    <value>Account has been suspended.  Please contact your upline for details. [3010]</value>
+    <value>Tài khoản của bạn bị đình chỉ. Vui lòng liên hệ với cấp trên của bạn trên để biết thêm chi tiết. [3010]</value>
+  </data>
+  <data name="AuthenFailed" xml:space="preserve">
+    <value>Đã xảy ra lỗi. Vui lòng liên hệ bộ phận chăm sóc khách hàng để biết thêm chi tiết. [2001]</value>
   </data>
   <data name="AuthenticationCredentialsIncorrect" xml:space="preserve">
-    <value>An error has occurred. Please contact CSD for details. [1003]</value>
+    <value>Đã xảy ra lỗi. Vui lòng liên hệ bộ phận chăm sóc khách hàng để biết thêm chi tiết. [1003]</value>
   </data>
   <data name="BetLimitChanged" xml:space="preserve">
-    <value>Your bet limit had been updated, please try again. [3009]</value>
+    <value>Hạn mức đặt cược của bạn có bị thay đổi, vui lòng thử lại. [3009]</value>
+  </data>
+  <data name="CurrencyNotExist" xml:space="preserve">
+    <value>Currency is not exist in 3rd. [9001]</value>
   </data>
   <data name="CurrencyNotFound" xml:space="preserve">
-    <value>An error has occurred. Please contact CSD for details. [4002]</value>
+    <value>Đã xảy ra lỗi. Vui lòng liên hệ bộ phận chăm sóc khách hàng để biết thêm chi tiết. [4002]</value>
   </data>
   <data name="DBError" xml:space="preserve">
-    <value>An error has occurred. Please contact CSD for details. [5004]</value>
+    <value>Đã xảy ra lỗi. Vui lòng liên hệ bộ phận chăm sóc khách hàng để biết thêm chi tiết. [5004]</value>
   </data>
   <data name="ExternalSystemNameNotExist" xml:space="preserve">
-    <value>An error has occurred. Please contact CSD for details. [3005]</value>
+    <value>Đã xảy ra lỗi. Vui lòng liên hệ bộ phận chăm sóc khách hàng để biết thêm chi tiết. [3005]</value>
   </data>
   <data name="GameNotFound" xml:space="preserve">
-    <value>An error has occurred. Please contact CSD for details. [4008]</value>
+    <value>Đã xảy ra lỗi. Vui lòng liên hệ bộ phận chăm sóc khách hàng để biết thêm chi tiết. [4008]</value>
   </data>
   <data name="InvalidSequence" xml:space="preserve">
-    <value>An error has occurred. Please contact CSD for details. [1008]</value>
+    <value>Đã xảy ra lỗi. Vui lòng liên hệ bộ phận chăm sóc khách hàng để biết thêm chi tiết. [1008]</value>
   </data>
   <data name="NetworkError" xml:space="preserve">
-    <value>An error has occurred. Please contact CSD for details. [5002]</value>
+    <value>Đã xảy ra lỗi. Vui lòng liên hệ bộ phận chăm sóc khách hàng để biết thêm chi tiết. [5002]</value>
   </data>
   <data name="NoBetLimitSetting" xml:space="preserve">
-    <value>You have no bet limit setting for this game, please contact your upline to set it. [3008]
-</value>
+    <value>Hạn mức đặt cược của bạn cho trò chơi nay hiện chưa được thiết lập, vui lòng liện hệ với cấp trên của bạn để thiết lập. [3008]</value>
   </data>
   <data name="NotSupportedCasinoType" xml:space="preserve">
-    <value>An error has occurred. Please contact CSD for details. [4010]</value>
+    <value>Đã xảy ra lỗi. Vui lòng liên hệ bộ phận chăm sóc khách hàng để biết thêm chi tiết. [4010]</value>
   </data>
   <data name="NotSupportedProduct" xml:space="preserve">
-    <value>An error has occurred. Please contact CSD for details. [4009]</value>
+    <value>Đã xảy ra lỗi. Vui lòng liên hệ bộ phận chăm sóc khách hàng để biết thêm chi tiết. [4009]</value>
   </data>
   <data name="ParameterIsIncorrect" xml:space="preserve">
-    <value>An error has occurred. Please contact CSD for details. [1007]</value>
+    <value>Đã xảy ra lỗi. Vui lòng liên hệ bộ phận chăm sóc khách hàng để biết thêm chi tiết. [1007]</value>
   </data>
   <data name="PlayerError" xml:space="preserve">
-    <value>An error has occurred. Please contact CSD for details. [4001]</value>
+    <value>Đã xảy ra lỗi. Vui lòng liên hệ bộ phận chăm sóc khách hàng để biết thêm chi tiết. [4001]</value>
   </data>
   <data name="PlayerExceededGameLimit" xml:space="preserve">
-    <value>Your stake had exceeded your bet limit settings, please try again. [3003]</value>
+    <value>Tiền cược của bạn hiện vượt quá hạn mức đặt cươc cho phép, vui lòng thử lại. [3003]</value>
   </data>
   <data name="PlayerHasInsufficientFunds" xml:space="preserve">
-    <value>Your account has Insufficient funds. [3002]</value>
+    <value>Tài khoản của bạn hiện không có đủ tiền. [3002]</value>
   </data>
   <data name="PlayerNoPermitted" xml:space="preserve">
-    <value>Game disabled. Please contact your upline for details. [3004]</value>
+    <value>Trò chơi hiện chưa được kích hoạt. Vui lòng liện hệ với cấp trên của bạn để biết thêm chi tiết. [3004]</value>
   </data>
   <data name="PreviousRequestFailed" xml:space="preserve">
-    <value>An error has occurred. Please contact CSD for details. [3013]</value>
+    <value>Đã xảy ra lỗi. Vui lòng liên hệ bộ phận chăm sóc khách hàng để biết thêm chi tiết. [3013]</value>
   </data>
   <data name="ProcessedWithDifferentDetails" xml:space="preserve">
-    <value>An error has occurred. Please contact CSD for details. [3001]</value>
+    <value>Đã xảy ra lỗi. Vui lòng liên hệ bộ phận chăm sóc khách hàng để biết thêm chi tiết. [3001]</value>
   </data>
   <data name="SettingError" xml:space="preserve">
-    <value>An error has occurred. Please contact CSD for details. [4004]</value>
+    <value>Đã xảy ra lỗi. Vui lòng liên hệ bộ phận chăm sóc khách hàng để biết thêm chi tiết. [4004]</value>
   </data>
   <data name="SettingNotFound" xml:space="preserve">
-    <value>An error has occurred. Please contact CSD for details. [4003]</value>
+    <value>Đã xảy ra lỗi. Vui lòng liên hệ bộ phận chăm sóc khách hàng để biết thêm chi tiết. [4003]</value>
   </data>
   <data name="TheRandomParameterIsMissing" xml:space="preserve">
-    <value>An error has occurred. Please contact CSD for details. [1006]</value>
+    <value>Đã xảy ra lỗi. Vui lòng liên hệ bộ phận chăm sóc khách hàng để biết thêm chi tiết. [1006]</value>
   </data>
   <data name="TheSignDataIsInvalid" xml:space="preserve">
-    <value>An error has occurred. Please contact CSD for details. [1005]</value>
+    <value>Đã xảy ra lỗi. Vui lòng liên hệ bộ phận chăm sóc khách hàng để biết thêm chi tiết. [1005]</value>
   </data>
   <data name="TheVendorIdIsInvalid" xml:space="preserve">
-    <value>An error has occurred. Please contact CSD for details. [1004]</value>
+    <value>Đã xảy ra lỗi. Vui lòng liên hệ bộ phận chăm sóc khách hàng để biết thêm chi tiết. [1004]</value>
   </data>
   <data name="TokenExpired" xml:space="preserve">
-    <value>System timed out, please closed the current game window and try again. [1002]</value>
+    <value>Đã hết thời gian chờ, vui lòng đóng cửa sổ trò chơi hiện tại rồi thử lại [1001]</value>
   </data>
   <data name="TokenInvalid" xml:space="preserve">
-    <value>System timed out, please closed the current game window and try again. [1001]</value>
+    <value>Đã hết thời gian chờ, vui lòng đóng cửa sổ trò chơi hiện tại rồi thử lại [1001]</value>
   </data>
   <data name="UM" xml:space="preserve">
-    <value>Under maintenance ({0} -{1}). [5003]</value>
+    <value>Hệ thống đang bảo trì ({0} - {1}). [5003]</value>
   </data>
   <data name="UnspecifiedError" xml:space="preserve">
-    <value>An error has occurred. Please contact CSD for details. [1000]</value>
+    <value>Đã xảy ra lỗi. Vui lòng liên hệ bộ phận chăm sóc khách hàng để biết thêm chi tiết. [1000]</value>
   </data>
 </root>

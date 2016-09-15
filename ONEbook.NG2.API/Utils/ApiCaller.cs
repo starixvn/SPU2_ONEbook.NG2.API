@@ -28,7 +28,7 @@ namespace ONEbook.NG2.API.Utils
         {
             var logId = 0L;
             var logger = new APILogger();
-            
+
             try
             {
                 dynamic req = request;
@@ -48,7 +48,10 @@ namespace ONEbook.NG2.API.Utils
                     result = sr.ReadToEnd();
                 }
 
-                logger.LogResponse(logId, GetPropertyValue(result, "ErrorCode"), result);
+                var errorCode = GetPropertyValue(result, "ErrorCode");
+                logger.LogResponse(logId, errorCode, result);
+
+                result = SetPropertyValue(result, "ErrorDescription", errorCode, req.Language);
 
                 return ApiJsonConvert.DeserializeObject<TResponse>(result);
             }
@@ -122,6 +125,23 @@ namespace ONEbook.NG2.API.Utils
             }
 
             return val;
+        }
+
+        private static string SetPropertyValue(string input, string propertyName, int errorCode, string language)
+        {
+            var pattern = "(\"" + propertyName + "\":)([^\r\n][^a-zA-Z0-9]+)";
+            var val = string.Empty;
+            var regexMatch = Regex.Match(input, pattern, RegexOptions.IgnoreCase);
+
+            if (regexMatch.Success)
+            {
+                val = Regex.Replace(regexMatch.Groups[2].ToString(), @"[^a-zA-Z0-9_.]+", string.Empty, RegexOptions.Compiled);
+            }
+
+            var resource = ApiResourceHelper.GetResource(((ApiError)errorCode).ToString(), language);
+            var replacement = string.IsNullOrWhiteSpace(resource) ? val : resource;
+
+            return input.Replace("\"" + propertyName + "\":\"" + val + "\"", "\"" + propertyName + "\":\"" + resource + "\"");
         }
     }
 }

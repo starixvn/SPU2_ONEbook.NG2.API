@@ -129,11 +129,17 @@
   <data name="AccountSuspened" xml:space="preserve">
     <value>Account has been suspended.  Please contact your upline for details. [3010]</value>
   </data>
+  <data name="AuthenFailed" xml:space="preserve">
+    <value>An error has occurred. Please contact CSD for details. [2001]</value>
+  </data>
   <data name="AuthenticationCredentialsIncorrect" xml:space="preserve">
     <value>An error has occurred. Please contact CSD for details. [1003]</value>
   </data>
   <data name="BetLimitChanged" xml:space="preserve">
     <value>Your bet limit had been updated, please try again. [3009]</value>
+  </data>
+  <data name="CurrencyNotExist" xml:space="preserve">
+    <value>Currency is not exist in 3rd. [9001]</value>
   </data>
   <data name="CurrencyNotFound" xml:space="preserve">
     <value>An error has occurred. Please contact CSD for details. [4002]</value>

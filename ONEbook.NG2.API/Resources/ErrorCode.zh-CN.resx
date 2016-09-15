@@ -118,97 +118,102 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AccountIsBlacklisted" xml:space="preserve">
-    <value>Account has been closed. Please contact CSD for details. [2005]</value>
+    <value>您的帐号已被关闭，请联系您的上线，谢谢。[2005]</value>
   </data>
   <data name="AccountLocked" xml:space="preserve">
-    <value>Account has been closed.  Please contact your upline for details. [2002]</value>
+    <value>您的帐号已被关闭，请联系您的上线，谢谢。[2002]</value>
   </data>
   <data name="AccountNotExist" xml:space="preserve">
-    <value>An error has occurred. Please contact CSD for details. [2003]</value>
+    <value>发生错误，有关更多信息，请联系客户服务。[2003]</value>
   </data>
   <data name="AccountSuspened" xml:space="preserve">
-    <value>Account has been suspended.  Please contact your upline for details. [3010]</value>
+    <value>您的帐号暂时无法下注，有关更多信息，请联络您的上线。[3010]</value>
+  </data>
+  <data name="AuthenFailed" xml:space="preserve">
+    <value>发生错误，有关更多信息，请联系客户服务。[2001]</value>
   </data>
   <data name="AuthenticationCredentialsIncorrect" xml:space="preserve">
-    <value>An error has occurred. Please contact CSD for details. [1003]</value>
+    <value>发生错误，有关更多信息，请联系客户服务。[1003]</value>
   </data>
   <data name="BetLimitChanged" xml:space="preserve">
-    <value>Your bet limit had been updated, please try again. [3009]</value>
+    <value>您的下注限额已更改，请再次下注。[3009]</value>
+  </data>
+  <data name="CurrencyNotExist" xml:space="preserve">
+    <value>Currency is not exist in 3rd. [9001]</value>
   </data>
   <data name="CurrencyNotFound" xml:space="preserve">
-    <value>An error has occurred. Please contact CSD for details. [4002]</value>
+    <value>发生错误，有关更多信息，请联系客户服务。[4002]</value>
   </data>
   <data name="DBError" xml:space="preserve">
-    <value>An error has occurred. Please contact CSD for details. [5004]</value>
+    <value>无法开启游戏页面，请联系客户服务[5004]</value>
   </data>
   <data name="ExternalSystemNameNotExist" xml:space="preserve">
-    <value>An error has occurred. Please contact CSD for details. [3005]</value>
+    <value>发生错误，有关更多信息，请联系客户服务。[3005]</value>
   </data>
   <data name="GameNotFound" xml:space="preserve">
-    <value>An error has occurred. Please contact CSD for details. [4008]</value>
+    <value>发生错误，有关更多信息，请联系客户服务。[4008]</value>
   </data>
   <data name="InvalidSequence" xml:space="preserve">
-    <value>An error has occurred. Please contact CSD for details. [1008]</value>
+    <value>发生错误，有关更多信息，请联系客户服务。[1008]</value>
   </data>
   <data name="NetworkError" xml:space="preserve">
-    <value>An error has occurred. Please contact CSD for details. [5002]</value>
+    <value>无法开启游戏页面，请联系客户服务[5002]</value>
   </data>
   <data name="NoBetLimitSetting" xml:space="preserve">
-    <value>You have no bet limit setting for this game, please contact your upline to set it. [3008]
-</value>
+    <value>您的下注限额未设定，请联络您的上线确认设定。[3008]</value>
   </data>
   <data name="NotSupportedCasinoType" xml:space="preserve">
-    <value>An error has occurred. Please contact CSD for details. [4010]</value>
+    <value>发生错误，有关更多信息，请联系客户服务。[4010]</value>
   </data>
   <data name="NotSupportedProduct" xml:space="preserve">
-    <value>An error has occurred. Please contact CSD for details. [4009]</value>
+    <value>发生错误，有关更多信息，请联系客户服务。[4009]</value>
   </data>
   <data name="ParameterIsIncorrect" xml:space="preserve">
-    <value>An error has occurred. Please contact CSD for details. [1007]</value>
+    <value>发生错误，有关更多信息，请联系客户服务。[1007]</value>
   </data>
   <data name="PlayerError" xml:space="preserve">
-    <value>An error has occurred. Please contact CSD for details. [4001]</value>
+    <value>发生错误，有关更多信息，请联系客户服务。[4001]</value>
   </data>
   <data name="PlayerExceededGameLimit" xml:space="preserve">
-    <value>Your stake had exceeded your bet limit settings, please try again. [3003]</value>
+    <value>下注金额已超过您的下注设定，请再次下注。[3003]</value>
   </data>
   <data name="PlayerHasInsufficientFunds" xml:space="preserve">
-    <value>Your account has Insufficient funds. [3002]</value>
+    <value>余额不足。[3002]</value>
   </data>
   <data name="PlayerNoPermitted" xml:space="preserve">
-    <value>Game disabled. Please contact your upline for details. [3004]</value>
+    <value>你的帐户无法进行游戏，请联系您的上线，谢谢。[3004]</value>
   </data>
   <data name="PreviousRequestFailed" xml:space="preserve">
-    <value>An error has occurred. Please contact CSD for details. [3013]</value>
+    <value>发生错误，有关更多信息，请联系客户服务。[3013]</value>
   </data>
   <data name="ProcessedWithDifferentDetails" xml:space="preserve">
-    <value>An error has occurred. Please contact CSD for details. [3001]</value>
+    <value>发生错误，有关更多信息，请联系客户服务。[3001]</value>
   </data>
   <data name="SettingError" xml:space="preserve">
-    <value>An error has occurred. Please contact CSD for details. [4004]</value>
+    <value>发生错误，有关更多信息，请联系客户服务。[4004]</value>
   </data>
   <data name="SettingNotFound" xml:space="preserve">
-    <value>An error has occurred. Please contact CSD for details. [4003]</value>
+    <value>发生错误，有关更多信息，请联系客户服务。[4003]</value>
   </data>
   <data name="TheRandomParameterIsMissing" xml:space="preserve">
-    <value>An error has occurred. Please contact CSD for details. [1006]</value>
+    <value>发生错误，有关更多信息，请联系客户服务。[1006]</value>
   </data>
   <data name="TheSignDataIsInvalid" xml:space="preserve">
-    <value>An error has occurred. Please contact CSD for details. [1005]</value>
+    <value>发生错误，有关更多信息，请联系客户服务。[1005]</value>
   </data>
   <data name="TheVendorIdIsInvalid" xml:space="preserve">
-    <value>An error has occurred. Please contact CSD for details. [1004]</value>
+    <value>发生错误，有关更多信息，请联系客户服务。[1004]</value>
   </data>
   <data name="TokenExpired" xml:space="preserve">
-    <value>System timed out, please closed the current game window and try again. [1002]</value>
+    <value>系统逾时，请重新启动游戏。[1002]</value>
   </data>
   <data name="TokenInvalid" xml:space="preserve">
-    <value>System timed out, please closed the current game window and try again. [1001]</value>
+    <value>系统逾时，请重新启动游戏。[1001]</value>
   </data>
   <data name="UM" xml:space="preserve">
-    <value>Under maintenance ({0} -{1}). [5003]</value>
+    <value>系统维护中({0} - {1})[5003]</value>
   </data>
   <data name="UnspecifiedError" xml:space="preserve">
-    <value>An error has occurred. Please contact CSD for details. [1000]</value>
+    <value>发生错误，有关更多信息，请联系客户服务。[1000]</value>
   </data>
 </root>
