@@ -35,7 +35,7 @@ namespace ONEbook.NG2.API.Utils
                 var param = ApiJsonConvert.SerializeObject(request);
                 var xml = JsonToXml(param);
                 var actionId = FunctionToId(function.ToString());
-                var systemId = req.Auth.SiteId;
+                var systemId = req.Auth.SiteId == 2000 ? 3 : 2;
                 var userId = req.UserId;
                 var custId = GetPropertyValue(param, "ObCustId");
                 var result = string.Empty;
@@ -129,7 +129,7 @@ namespace ONEbook.NG2.API.Utils
 
         private static string SetPropertyValue(string input, string propertyName, int errorCode, string language)
         {
-            var pattern = "(\"" + propertyName + "\":)([^\r\n][a-zA-Z0-9,[]{}()?.! ]+)";
+            var pattern = "(\"" + propertyName + "\":)([^\r\n][a-zA-Z0-9,()?.! ]+)";
             var val = string.Empty;
             var regexMatch = Regex.Match(input, pattern, RegexOptions.IgnoreCase);
 
@@ -138,10 +138,14 @@ namespace ONEbook.NG2.API.Utils
                 val = regexMatch.Groups[2].ToString().Replace("\"", string.Empty);
             }
 
-            var resource = ApiResourceHelper.GetResource(((ApiError)errorCode).ToString(), language);
-            var replacement = string.IsNullOrWhiteSpace(resource) ? val : resource;
+            if (string.IsNullOrWhiteSpace(val))
+            {
+                return input;
+            }
 
-            input = input.Replace(val, replacement);
+            var resource = ApiResourceHelper.GetResource(((ApiError)errorCode).ToString(), language);
+            resource = string.IsNullOrWhiteSpace(resource) ? val : resource;
+            input = input.Replace(val, resource);
 
             return input;
         }
