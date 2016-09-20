@@ -38,8 +38,7 @@ namespace ONEbook.NG2.API.Utils
                 var systemId = req.Auth.SiteId == 2000 ? 3 : 2;
                 var userId = req.UserId;
                 var custId = GetPropertyValue(param, "ObCustId");
-                var result = string.Empty;
-                
+                var result = string.Empty;                
                 logId = logger.LogRequest(systemId, NG2Configuration.Instance.ProductId, userId, function.ToString(), custId, actionId, xml);
 
                 var webRequest = CreateRequest<TRequest>(function, request);
@@ -50,10 +49,12 @@ namespace ONEbook.NG2.API.Utils
 
                 var errorCode = GetPropertyValue(result, "ErrorCode");
                 logger.LogResponse(logId, errorCode, result);
-
                 result = SetPropertyValue(result, "ErrorDescription", errorCode, req.Language);
+                dynamic res = ApiJsonConvert.DeserializeObject<TResponse>(result);
+                res.UserId = userId;
+                res.Language = req.Language;
 
-                return ApiJsonConvert.DeserializeObject<TResponse>(result);
+                return res;
             }
             catch (RemotingTimeoutException te)
             {
