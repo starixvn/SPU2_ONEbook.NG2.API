@@ -341,7 +341,7 @@ namespace ONEbook.NG2.API.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Under maintenance ({0} -{1}). [5003].
+        ///   Looks up a localized string similar to Under maintenance ({0} - {1}). [5003].
         /// </summary>
         public static string UM {
             get {

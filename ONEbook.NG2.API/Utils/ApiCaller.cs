@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Runtime.Remoting;
 using System.Runtime.Serialization.Json;
@@ -24,6 +24,7 @@ namespace ONEbook.NG2.API.Utils
         /// <param name="function">API function enum.</param>
         /// <param name="request">Request param.</param>
         /// <returns></returns>
+        [SuppressMessage("StyleCop.CSharp.Nexcel.NexcelCustomRules", "SP2101:MethodMustNotContainMoreLinesThan", Justification = "Reviewed. Suppression is OK here.")]
         public static TResponse Invoke<TRequest, TResponse>(ApiFunc function, TRequest request)
         {
             var logId = 0L;
@@ -39,7 +40,19 @@ namespace ONEbook.NG2.API.Utils
                 var userId = req.UserId;
                 var custId = GetPropertyValue(param, "ObCustId");
                 var result = string.Empty;                
+
                 logId = logger.LogRequest(systemId, NG2Configuration.Instance.ProductId, userId, function.ToString(), custId, actionId, xml);
+
+                var serviceUM = new ONEbook.UM.ThirdParty.Services.Impl.UMService();
+                var infoUM = serviceUM.GetUnderMaintenanceTime(NG2Configuration.Instance.ProductId);
+                if (infoUM.IsUnderMaintenanceTime)
+                {
+                    dynamic response = Activator.CreateInstance<TResponse>();
+                    response.Result.ErrorCode = (int)ApiError.UM;
+                    response.Result.ErrorDescription = string.Format(ApiResourceHelper.GetResource(ApiError.UM.ToString(), req.Language), infoUM.From, infoUM.To);
+
+                    return response;
+                }
 
                 var webRequest = CreateRequest<TRequest>(function, request);
                 using (var sr = new StreamReader(((HttpWebResponse)webRequest.GetResponse()).GetResponseStream()))

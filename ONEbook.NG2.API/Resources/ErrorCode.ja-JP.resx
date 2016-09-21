@@ -212,7 +212,7 @@
     <value>System timed out, please closed the current game window and try again. [1001]</value>
   </data>
   <data name="UM" xml:space="preserve">
-    <value>Under maintenance ({0} -{1}). [5003]</value>
+    <value>Under maintenance ({0} - {1}). [5003]</value>
   </data>
   <data name="UnspecifiedError" xml:space="preserve">
     <value>An error has occurred. Please contact CSD for details. [1000]</value>
