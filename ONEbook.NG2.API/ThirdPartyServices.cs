@@ -26,7 +26,6 @@ namespace ONEbook.NG2.API
             foreach (var item in response.Result.AccountArray)
             {
                 item.IsCreated = _debug ? (_errorCode == 0 ? 1 : 0) : item.IsCreated;
-                item.ErrorCode = _debug ? _errorCode : item.ErrorCode;
             }
 
             return response;

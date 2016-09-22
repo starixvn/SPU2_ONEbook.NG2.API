@@ -48,8 +48,12 @@ namespace ONEbook.NG2.API.Utils
                 if (infoUM.IsUnderMaintenanceTime)
                 {
                     dynamic response = Activator.CreateInstance<TResponse>();
+                    response.TimeStamp = req.TimeStamp;
+                    response.Result.Seq = req.Call.Seq;
                     response.Result.ErrorCode = (int)ApiError.UM;
-                    response.Result.ErrorDescription = string.Format(ApiResourceHelper.GetResource(ApiError.UM.ToString(), req.Language), infoUM.From, infoUM.To);
+                    response.Result.ErrorDescription = string.Format(ApiResourceHelper.GetResource(ApiError.UM.ToString(), req.Language), infoUM.From, infoUM.To);                                       
+
+                    logger.LogResponse(logId, (int)ApiError.UM, ApiJsonConvert.SerializeObject(response));
 
                     return response;
                 }
@@ -66,6 +70,8 @@ namespace ONEbook.NG2.API.Utils
                 dynamic res = ApiJsonConvert.DeserializeObject<TResponse>(result);
                 res.UserId = userId;
                 res.Language = req.Language;
+                res.TimeStamp = req.TimeStamp;
+                res.Result.Seq = req.Call.Seq;
 
                 return res;
             }

@@ -54,13 +54,14 @@
            rq7.Call.AccountArray.Add(new ONEbook.NG2.API.DTO.CreateAccount.AccountInfo { ObCustId = 123456 });
            rq7.Call.Level = 4;
            rq7.Call.UplineId = 123456;
+           rq7.Language = "vi-VN";
            var rs7 = service.SyncCustomers(rq7);
 
            var rq8 = new ONEbook.NG2.API.DTO.SyncExchangeRate.Request();
            rq8.Language = "zh-CN";
            rq8.Auth.SiteId = 2000;
            rq8.UserId = 8;
-           rq8.Call.CurrencyArray.Add(new ONEbook.NG2.API.DTO.SyncExchangeRate.CurrencyInfo { CurrencyId = 1, ExchangeRate = 3.4567M });
+           rq8.Call.CurrencyArray.Add(new ONEbook.NG2.API.DTO.SyncExchangeRate.CurrencyInfo { CurrencyId = 1, ExchangeRate = 3.4567M });           
            var rs8 = service.SyncExchangeRates(rq8);
 
 
