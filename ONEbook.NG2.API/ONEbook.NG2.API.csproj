@@ -140,7 +140,7 @@
     <Compile Include="DTO\CreateAccount\Request.cs" />
     <Compile Include="DTO\CreateAccount\Response.cs" />
     <Compile Include="DTO\CreateAccount\Result.cs" />
-    <Compile Include="DTO\BaseTime.cs" />
+    <Compile Include="DTO\BaseInfo.cs" />
     <Compile Include="DTO\BaseToken.cs" />
     <Compile Include="DTO\CreateCurrency\CurrencyInfo.cs" />
     <Compile Include="DTO\CreateCurrency\Call.cs" />

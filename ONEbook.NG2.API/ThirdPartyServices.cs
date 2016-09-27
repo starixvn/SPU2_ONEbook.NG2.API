@@ -29,6 +29,7 @@ namespace ONEbook.NG2.API
 
             if (!response.Result.IsSuccess)
             {
+                request.LogId = response.LogId;
                 ApiRabbitMQ<DTO.CreateAccount.Request>.NotifyFailedRequest(request);
             }
 

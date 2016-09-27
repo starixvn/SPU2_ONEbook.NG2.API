@@ -66,7 +66,8 @@
 
 
             %> 
-            
+        
+        <%= ONEbook.NG2.API.Utils.ApiJsonConvert.SerializeObject(rq7) %><br />    
         <%= ONEbook.NG2.API.Utils.ApiJsonConvert.SerializeObject(rs1) %><br />
         <%= ONEbook.NG2.API.Utils.ApiJsonConvert.SerializeObject(rs2) %><br />
         <%= ONEbook.NG2.API.Utils.ApiJsonConvert.SerializeObject(rs3) %><br />

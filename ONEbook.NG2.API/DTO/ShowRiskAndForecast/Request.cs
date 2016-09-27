@@ -3,7 +3,7 @@
     /// <summary>
     /// Request information.
     /// </summary>
-    public class Request : BaseTime
+    public class Request : BaseInfo
     {
         /// <summary>
         /// Initializes the instance of <see cref="Request" /> class.

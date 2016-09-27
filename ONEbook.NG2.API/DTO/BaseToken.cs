@@ -18,11 +18,6 @@ namespace ONEbook.NG2.API.DTO
         /// <summary>
         /// Token to validate the request or response. No need to input.
         /// </summary>
-        public string Seq { get; internal set; }
-
-        /// <summary>
-        /// Log id of request.
-        /// </summary>
-        public long LogId { get; internal set; }
+        public string Seq { get; internal set; }        
     }
 }

@@ -52,7 +52,8 @@ namespace ONEbook.NG2.API.Utils
                     response.Result.Seq = req.Call.Seq;
                     response.Result.ErrorCode = (int)ApiError.UM;
                     response.Result.ErrorDescription = string.Format(ApiResourceHelper.GetResource(ApiError.UM.ToString(), req.Language), infoUM.From, infoUM.To);
-                    response.Result.LogId = logId;
+                    response.LogId = logId;
+                    response.UserId = userId;
 
                     logger.LogResponse(logId, (int)ApiError.UM, ApiJsonConvert.SerializeObject(response));
 
@@ -73,7 +74,7 @@ namespace ONEbook.NG2.API.Utils
                 res.Language = req.Language;
                 res.TimeStamp = req.TimeStamp;
                 res.Result.Seq = req.Call.Seq;
-                res.Result.LogId = logId;
+                res.LogId = logId;
 
                 return res;
             }
@@ -113,7 +114,7 @@ namespace ONEbook.NG2.API.Utils
                 var custId = GetPropertyValue(param, "ObCustId");
                 var result = string.Empty;
 
-                logId = req.Call.LogId;
+                logId = req.LogId;
 
                 var serviceUM = new ONEbook.UM.ThirdParty.Services.Impl.UMService();
                 var infoUM = serviceUM.GetUnderMaintenanceTime(NG2Configuration.Instance.ProductId);
@@ -124,7 +125,8 @@ namespace ONEbook.NG2.API.Utils
                     response.Result.Seq = req.Call.Seq;
                     response.Result.ErrorCode = (int)ApiError.UM;
                     response.Result.ErrorDescription = string.Format(ApiResourceHelper.GetResource(ApiError.UM.ToString(), req.Language), infoUM.From, infoUM.To);
-                    response.Result.LogId = logId;
+                    response.LogId = logId;
+                    response.UserId = userId;
 
                     logger.LogResponse(logId, (int)ApiError.UM, ApiJsonConvert.SerializeObject(response));
 
@@ -145,7 +147,7 @@ namespace ONEbook.NG2.API.Utils
                 res.Language = req.Language;
                 res.TimeStamp = req.TimeStamp;
                 res.Result.Seq = req.Call.Seq;
-                res.Result.LogId = logId;
+                res.LogId = logId;
 
                 return res;
             }

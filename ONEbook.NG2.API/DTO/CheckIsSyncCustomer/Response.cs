@@ -3,7 +3,7 @@
     /// <summary>
     /// Response info of request.
     /// </summary>
-    public class Response : BaseTime
+    public class Response : BaseInfo
     {
         /// <summary>
         /// Initalizes instance of <see cref="Response" /> class.
