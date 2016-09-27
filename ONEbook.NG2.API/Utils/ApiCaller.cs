@@ -51,7 +51,8 @@ namespace ONEbook.NG2.API.Utils
                     response.TimeStamp = req.TimeStamp;
                     response.Result.Seq = req.Call.Seq;
                     response.Result.ErrorCode = (int)ApiError.UM;
-                    response.Result.ErrorDescription = string.Format(ApiResourceHelper.GetResource(ApiError.UM.ToString(), req.Language), infoUM.From, infoUM.To);                                       
+                    response.Result.ErrorDescription = string.Format(ApiResourceHelper.GetResource(ApiError.UM.ToString(), req.Language), infoUM.From, infoUM.To);
+                    response.Result.LogId = logId;
 
                     logger.LogResponse(logId, (int)ApiError.UM, ApiJsonConvert.SerializeObject(response));
 
@@ -72,6 +73,79 @@ namespace ONEbook.NG2.API.Utils
                 res.Language = req.Language;
                 res.TimeStamp = req.TimeStamp;
                 res.Result.Seq = req.Call.Seq;
+                res.Result.LogId = logId;
+
+                return res;
+            }
+            catch (RemotingTimeoutException te)
+            {
+                logger.LogResponse(logId, (int)ApiError.RemotingTimeoutException, te.ToString());
+                te.Write();
+            }
+            catch (RemotingException re)
+            {
+                logger.LogResponse(logId, (int)ApiError.RemotingException, re.ToString());
+                re.Write();
+            }
+            catch (Exception e)
+            {
+                logger.LogResponse(logId, (int)ApiError.Exception, e.ToString());
+                e.Write();
+            }
+
+            return Activator.CreateInstance<TResponse>();
+        }
+
+        [SuppressMessage("StyleCop.CSharp.Nexcel.NexcelCustomRules", "SP2101:MethodMustNotContainMoreLinesThan", Justification = "Reviewed. Suppression is OK here.")]
+        public static TResponse RetryInvoke<TRequest, TResponse>(ApiFunc function, TRequest request)
+        {
+            var logId = 0L;
+            var logger = new APILogger();
+
+            try
+            {
+                dynamic req = request;
+                var param = ApiJsonConvert.SerializeObject(request);
+                var xml = JsonToXml(param);
+                var actionId = FunctionToId(function.ToString());
+                var systemId = req.Auth.SiteId == 2000 ? 3 : 2;
+                var userId = req.UserId;
+                var custId = GetPropertyValue(param, "ObCustId");
+                var result = string.Empty;
+
+                logId = req.Call.LogId;
+
+                var serviceUM = new ONEbook.UM.ThirdParty.Services.Impl.UMService();
+                var infoUM = serviceUM.GetUnderMaintenanceTime(NG2Configuration.Instance.ProductId);
+                if (infoUM.IsUnderMaintenanceTime)
+                {
+                    dynamic response = Activator.CreateInstance<TResponse>();
+                    response.TimeStamp = req.TimeStamp;
+                    response.Result.Seq = req.Call.Seq;
+                    response.Result.ErrorCode = (int)ApiError.UM;
+                    response.Result.ErrorDescription = string.Format(ApiResourceHelper.GetResource(ApiError.UM.ToString(), req.Language), infoUM.From, infoUM.To);
+                    response.Result.LogId = logId;
+
+                    logger.LogResponse(logId, (int)ApiError.UM, ApiJsonConvert.SerializeObject(response));
+
+                    return response;
+                }
+
+                var webRequest = CreateRequest<TRequest>(function, request);
+                using (var sr = new StreamReader(((HttpWebResponse)webRequest.GetResponse()).GetResponseStream()))
+                {
+                    result = sr.ReadToEnd();
+                }
+
+                var errorCode = GetPropertyValue(result, "ErrorCode");
+                logger.LogResponse(logId, errorCode, result);
+                result = SetPropertyValue(result, "ErrorDescription", errorCode, req.Language);
+                dynamic res = ApiJsonConvert.DeserializeObject<TResponse>(result);
+                res.UserId = userId;
+                res.Language = req.Language;
+                res.TimeStamp = req.TimeStamp;
+                res.Result.Seq = req.Call.Seq;
+                res.Result.LogId = logId;
 
                 return res;
             }

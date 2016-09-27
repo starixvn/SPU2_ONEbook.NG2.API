@@ -6,6 +6,13 @@
     public interface IThirdPartyServices
     {
         /// <summary>
+        /// Retries sync customers.
+        /// </summary>
+        /// <param name="request">Create account request.</param>
+        /// <returns>Create account response.</returns>
+        DTO.CreateAccount.Response RetrySyncCustomers(DTO.CreateAccount.Request request);
+
+        /// <summary>
         /// Sync customers.
         /// </summary>
         /// <param name="request"></param>

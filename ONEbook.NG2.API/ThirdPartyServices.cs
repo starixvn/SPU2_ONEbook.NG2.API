@@ -1,6 +1,5 @@
 ﻿using System;
 using ONEbook.NG2.API.Configuration;
-using ONEbook.NG2.API.DTO.CreateAccount;
 using ONEbook.NG2.API.Interface;
 using ONEbook.NG2.API.Utils;
 
@@ -20,12 +19,17 @@ namespace ONEbook.NG2.API
                
         public DTO.CreateAccount.Response SyncCustomers(DTO.CreateAccount.Request request)
         {
-            var response = ApiCaller.Invoke<Request, Response>(ApiFunc.CreateAccount, request);
+            var response = ApiCaller.Invoke<DTO.CreateAccount.Request, DTO.CreateAccount.Response>(ApiFunc.CreateAccount, request);
             response.Result.ErrorCode = _debug ? _errorCode : response.Result.ErrorCode;
 
             foreach (var item in response.Result.AccountArray)
             {
                 item.IsCreated = _debug ? (_errorCode == 0 ? 1 : 0) : item.IsCreated;
+            }
+
+            if (!response.Result.IsSuccess)
+            {
+                ApiRabbitMQ<DTO.CreateAccount.Request>.NotifyFailedRequest(request);
             }
 
             return response;
@@ -87,6 +91,19 @@ namespace ONEbook.NG2.API
         {
             var response = ApiCaller.Invoke<DTO.ShowParlayDetail.Request, DTO.ShowParlayDetail.Response>(ApiFunc.ShowParlayDetail, request);
             response.Result.ErrorCode = _debug ? _errorCode : response.Result.ErrorCode;
+
+            return response;
+        }
+
+        public DTO.CreateAccount.Response RetrySyncCustomers(DTO.CreateAccount.Request request)
+        {
+            var response = ApiCaller.RetryInvoke<DTO.CreateAccount.Request, DTO.CreateAccount.Response>(ApiFunc.CreateAccount, request);
+            response.Result.ErrorCode = _debug ? _errorCode : response.Result.ErrorCode;
+
+            foreach (var item in response.Result.AccountArray)
+            {
+                item.IsCreated = _debug ? (_errorCode == 0 ? 1 : 0) : item.IsCreated;
+            }
 
             return response;
         }

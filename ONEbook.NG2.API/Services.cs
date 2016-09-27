@@ -105,5 +105,15 @@ namespace ONEbook.NG2.API
         {
             return Instance.ShowParlayDetail(request);
         }
+
+        /// <summary>
+        /// Retries sync customers.
+        /// </summary>
+        /// <param name="request">Create account request.</param>
+        /// <returns>Create account response.</returns>
+        public DTO.CreateAccount.Response RetrySyncCustomers(DTO.CreateAccount.Request request)
+        {
+            return _service.RetrySyncCustomers(request);
+        }
     }
 }

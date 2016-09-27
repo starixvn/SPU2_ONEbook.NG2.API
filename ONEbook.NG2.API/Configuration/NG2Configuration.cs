@@ -72,5 +72,50 @@ namespace ONEbook.NG2.API.Configuration
         {
             get { return Convert.ToInt32(base["ProductId"]); }
         }
+
+        /// <summary>
+        /// RabbitMQ host.
+        /// </summary>
+        [ConfigurationProperty("RabbitHost", DefaultValue = "localhost", IsRequired = false)]
+        public string RabbitHost
+        {
+            get { return base["RabbitHost"] as string; }
+        }
+
+        /// <summary>
+        /// RabbitMQ name.
+        /// </summary>
+        [ConfigurationProperty("RabbitName", DefaultValue = "hostname", IsRequired = false)]
+        public string RabbitName
+        {
+            get { return base["RabbitName"] as string; }
+        }
+
+        /// <summary>
+        /// RabbitMQ username.
+        /// </summary>
+        [ConfigurationProperty("RabbitUid", DefaultValue = "username", IsRequired = false)]
+        public string RabbitUid
+        {
+            get { return base["RabbitUid"] as string; }
+        }
+
+        /// <summary>
+        /// RabbitMQ password.
+        /// </summary>
+        [ConfigurationProperty("RabbitPwd", DefaultValue = "password", IsRequired = false)]
+        public string RabbitPwd
+        {
+            get { return base["RabbitPwd"] as string; }
+        }
+
+        /// <summary>
+        /// RabbitMQ timeout.
+        /// </summary>
+        [ConfigurationProperty("RabbitTimeout", DefaultValue = 30, IsRequired = false)]
+        public int RabbitTimeout
+        {
+            get { return Convert.ToInt32(base["RabbitTimeout"]); }
+        }
     }
 }
