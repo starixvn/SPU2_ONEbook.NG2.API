@@ -117,5 +117,14 @@ namespace ONEbook.NG2.API.Configuration
         {
             get { return Convert.ToInt32(base["RabbitTimeout"]); }
         }
+
+        /// <summary>
+        /// RabbitMQ topic.
+        /// </summary>
+        [ConfigurationProperty("RabbitTopic", DefaultValue = "topic", IsRequired = false)]
+        public string RabbitTopic
+        {
+            get { return base["RabbitTopic"] as string; }
+        }
     }
 }

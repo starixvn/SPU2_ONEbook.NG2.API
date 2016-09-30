@@ -22,7 +22,7 @@ namespace ONEbook.NG2.API.Utils
                         config.RabbitPwd, 
                         config.RabbitTimeout));
 
-                bus.Publish(req);
+                bus.Publish(req, config.RabbitTopic);
 
                 return true;
             }
