@@ -42,7 +42,6 @@ namespace ONEbook.NG2.API.Utils
                 var result = string.Empty;                
 
                 logId = logger.LogRequest(systemId, NG2Configuration.Instance.ProductId, userId, function.ToString(), custId, actionId, xml);
-                req.LogId = logId;
 
                 var serviceUM = new ONEbook.UM.ThirdParty.Services.Impl.UMService();
                 var infoUM = serviceUM.GetUnderMaintenanceTime(NG2Configuration.Instance.ProductId);
