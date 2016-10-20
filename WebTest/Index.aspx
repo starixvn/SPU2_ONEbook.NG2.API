@@ -11,7 +11,7 @@
     <div>
         <%
            var service = new ONEbook.NG2.API.Services();
-
+            /*
            var rq1 = new ONEbook.NG2.API.DTO.CheckIsSyncCustomer.Request();
            rq1.Auth.SiteId = 2000;
            rq1.UserId = 8;
@@ -46,7 +46,7 @@
            rq6.UserId = 8;
            rq6.Call.GambleId = 1;
            var rs6 = service.ShowTicketResult(rq6);
-
+           */
            var rq7 = new ONEbook.NG2.API.DTO.CreateAccount.Request();
            rq7.Auth.SiteId = 2000;
            rq7.UserId = 8;
@@ -56,26 +56,26 @@
            rq7.Call.UplineId = 123456;
            rq7.Language = "vi-VN";
            var rs7 = service.SyncCustomers(rq7);
-
+            /*
            var rq8 = new ONEbook.NG2.API.DTO.SyncExchangeRate.Request();
            rq8.Language = "zh-CN";
            rq8.Auth.SiteId = 2000;
            rq8.UserId = 8;
            rq8.Call.CurrencyArray.Add(new ONEbook.NG2.API.DTO.SyncExchangeRate.CurrencyInfo { CurrencyId = 1, ExchangeRate = 3.4567M });           
            var rs8 = service.SyncExchangeRates(rq8);
-
+           */
 
             %> 
         
         <%= ONEbook.NG2.API.Utils.ApiJsonConvert.SerializeObject(rq7) %><br />    
-        <%= ONEbook.NG2.API.Utils.ApiJsonConvert.SerializeObject(rs1) %><br />
+       <%-- <%= ONEbook.NG2.API.Utils.ApiJsonConvert.SerializeObject(rs1) %><br />
         <%= ONEbook.NG2.API.Utils.ApiJsonConvert.SerializeObject(rs2) %><br />
         <%= ONEbook.NG2.API.Utils.ApiJsonConvert.SerializeObject(rs3) %><br />
         <%= ONEbook.NG2.API.Utils.ApiJsonConvert.SerializeObject(rs4) %><br />
         <%= ONEbook.NG2.API.Utils.ApiJsonConvert.SerializeObject(rs5) %><br />
         <%= ONEbook.NG2.API.Utils.ApiJsonConvert.SerializeObject(rs6) %><br />
         <%= ONEbook.NG2.API.Utils.ApiJsonConvert.SerializeObject(rs7) %><br />
-        <%= ONEbook.NG2.API.Utils.ApiJsonConvert.SerializeObject(rs8) %><br />
+        <%= ONEbook.NG2.API.Utils.ApiJsonConvert.SerializeObject(rs8) %><br />--%>
     </div>
     </form>
 </body>

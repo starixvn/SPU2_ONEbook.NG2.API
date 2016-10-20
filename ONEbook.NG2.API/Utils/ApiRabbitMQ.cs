@@ -9,11 +9,12 @@ namespace ONEbook.NG2.API.Utils
     {
         public static bool NotifyFailedRequest(T request)
         {
+            IBus bus = null;
             try
             {
                 var config = NG2Configuration.Instance;
                 object req = object.ReferenceEquals(null, request) ? Activator.CreateInstance(typeof(T)) : request;
-                var bus = RabbitHutch.CreateBus(
+                bus = RabbitHutch.CreateBus(
                     string.Format(
                         "host={0};virtualHost={1};username={2};password={3};requestedHeartbeat={4}", 
                         config.RabbitHost, 
@@ -22,7 +23,7 @@ namespace ONEbook.NG2.API.Utils
                         config.RabbitPwd, 
                         config.RabbitTimeout));
 
-                bus.Publish(req, config.RabbitTopic);
+                bus.Publish((T)req, config.RabbitTopic);
 
                 return true;
             }
@@ -31,6 +32,13 @@ namespace ONEbook.NG2.API.Utils
                 ex.Write();
 
                 return false;
+            }
+            finally
+            {
+                if (bus != null)
+                {
+                    bus.Dispose();
+                }
             }
         }
     }
