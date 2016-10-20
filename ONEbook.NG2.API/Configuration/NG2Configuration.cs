@@ -6,7 +6,7 @@ namespace ONEbook.NG2.API.Configuration
     /// <summary>
     /// NG2 Configuration class.
     /// </summary>
-    internal class NG2Configuration : ConfigurationSection
+    public class NG2Configuration : ConfigurationSection
     {
         private static NG2Configuration _instance = null;
 
@@ -67,6 +67,9 @@ namespace ONEbook.NG2.API.Configuration
             get { return base["Success"] as string; }
         }
 
+        /// <summary>
+        /// Product id.
+        /// </summary>
         [ConfigurationProperty("ProductId", DefaultValue = 23, IsRequired = false)]
         public int ProductId
         {
