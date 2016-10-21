@@ -13,6 +13,12 @@ namespace ONEbook.NG2.API.Utils
             try
             {
                 var config = NG2Configuration.Instance;
+
+                if (config.RabbitAllowedPublish == "0")
+                {
+                    return false;
+                }
+
                 object req = object.ReferenceEquals(null, request) ? Activator.CreateInstance(typeof(T)) : request;
                 bus = RabbitHutch.CreateBus(
                     string.Format(

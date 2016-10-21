@@ -129,5 +129,14 @@ namespace ONEbook.NG2.API.Configuration
         {
             get { return base["RabbitTopic"] as string; }
         }
+
+        /// <summary>
+        /// Allow to publish message or not.
+        /// </summary>
+        [ConfigurationProperty("RabbitAllowedPublish", DefaultValue = "1", IsRequired = false)]
+        public string RabbitAllowedPublish
+        {
+            get { return base["RabbitAllowedPublish"] as string; }
+        }
     }
 }
