@@ -21,7 +21,7 @@ namespace ONEbook.NG2.API.DTO
         /// </summary>
         public string TimeStamp
         {
-            get; internal set;
+            get; set;
         }
 
         /// <summary>
@@ -37,6 +37,6 @@ namespace ONEbook.NG2.API.DTO
         /// <summary>
         /// Log id of request.
         /// </summary>
-        public long LogId { get; internal set; }
+        public long LogId { get; set; }
     }
 }

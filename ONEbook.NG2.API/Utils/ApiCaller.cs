@@ -28,33 +28,30 @@ namespace ONEbook.NG2.API.Utils
         public static TResponse Invoke<TRequest, TResponse>(ApiFunc function, TRequest request)
         {
             var logId = 0L;
-            var logger = new APILogger();
-
+            var logger = new APILogger();            
+            dynamic req = request;
+            var userId = req.UserId;
+            dynamic response = Activator.CreateInstance<TResponse>();
+            response.TimeStamp = req.TimeStamp;
+            response.Result.Seq = req.Call.Seq;            
+            response.UserId = userId;            
             try
-            {
-                dynamic req = request;
+            {                
                 var param = ApiJsonConvert.SerializeObject(request);
                 var xml = JsonToXml(param);
                 var actionId = FunctionToId(function.ToString());
-                var systemId = req.Auth.SiteId == 2000 ? 3 : 2;
-                var userId = req.UserId;
+                var systemId = req.Auth.SiteId == 2000 ? 3 : 2;                
                 var custId = GetPropertyValue(param, "ObCustId");
-                var result = string.Empty;                
+                var result = string.Empty;
 
-                logId = logger.LogRequest(systemId, NG2Configuration.Instance.ProductId, userId, function.ToString(), custId, actionId, xml);
+                response.LogId = logId = logger.LogRequest(systemId, NG2Configuration.Instance.ProductId, userId, function.ToString(), custId, actionId, xml);
 
                 var serviceUM = new ONEbook.UM.ThirdParty.Services.Impl.UMService();
                 var infoUM = serviceUM.GetUnderMaintenanceTime(NG2Configuration.Instance.ProductId);
                 if (infoUM.IsUnderMaintenanceTime)
-                {
-                    dynamic response = Activator.CreateInstance<TResponse>();
-                    response.TimeStamp = req.TimeStamp;
-                    response.Result.Seq = req.Call.Seq;
+                {                    
                     response.Result.ErrorCode = (int)ApiError.UM;
                     response.Result.ErrorDescription = string.Format(ApiResourceHelper.GetResource(ApiError.UM.ToString(), req.Language), infoUM.From, infoUM.To);
-                    response.LogId = logId;
-                    response.UserId = userId;
-
                     logger.LogResponse(logId, (int)ApiError.UM, ApiJsonConvert.SerializeObject(response));
 
                     return response;
@@ -69,65 +66,66 @@ namespace ONEbook.NG2.API.Utils
                 var errorCode = GetPropertyValue(result, "ErrorCode");
                 logger.LogResponse(logId, errorCode, result);
                 result = SetPropertyValue(result, "ErrorDescription", errorCode, req.Language);
-                dynamic res = ApiJsonConvert.DeserializeObject<TResponse>(result);
-                res.UserId = userId;
-                res.Language = req.Language;
-                res.TimeStamp = req.TimeStamp;
-                res.Result.Seq = req.Call.Seq;
-                res.LogId = logId;
+                response = ApiJsonConvert.DeserializeObject<TResponse>(result);
+                response.UserId = userId;
+                response.Language = req.Language;
+                response.TimeStamp = req.TimeStamp;
+                response.Result.Seq = req.Call.Seq;
+                response.LogId = logId;
 
-                return res;
+                return response;
             }
             catch (RemotingTimeoutException te)
             {
+                response.Result.ErrorCode = (int)ApiError.RemotingTimeoutException;
                 logger.LogResponse(logId, (int)ApiError.RemotingTimeoutException, te.ToString());
                 te.Write();
             }
             catch (RemotingException re)
             {
+                response.Result.ErrorCode = (int)ApiError.RemotingException;
                 logger.LogResponse(logId, (int)ApiError.RemotingException, re.ToString());
                 re.Write();
             }
             catch (Exception e)
             {
+                response.Result.ErrorCode = (int)ApiError.Exception;
                 logger.LogResponse(logId, (int)ApiError.Exception, e.ToString());
                 e.Write();
             }
+            
+            response.LogId = logId;
 
-            return Activator.CreateInstance<TResponse>();
+            return response;
         }
 
         [SuppressMessage("StyleCop.CSharp.Nexcel.NexcelCustomRules", "SP2101:MethodMustNotContainMoreLinesThan", Justification = "Reviewed. Suppression is OK here.")]
         public static TResponse RetryInvoke<TRequest, TResponse>(ApiFunc function, TRequest request)
         {
-            var logId = 0L;
+            
+            dynamic req = request;            
+            dynamic response = Activator.CreateInstance<TResponse>();
+            long logId = req.LogId;
             var logger = new APILogger();
-
+            var userId = req.UserId;
+            response.TimeStamp = req.TimeStamp;
+            response.Result.Seq = req.Call.Seq;
+            response.LogId = logId;
+            response.UserId = userId;
             try
             {
-                dynamic req = request;
                 var param = ApiJsonConvert.SerializeObject(request);
                 var xml = JsonToXml(param);
                 var actionId = FunctionToId(function.ToString());
                 var systemId = req.Auth.SiteId == 2000 ? 3 : 2;
-                var userId = req.UserId;
                 var custId = GetPropertyValue(param, "ObCustId");
                 var result = string.Empty;
-
-                logId = req.LogId;
-
                 var serviceUM = new ONEbook.UM.ThirdParty.Services.Impl.UMService();
                 var infoUM = serviceUM.GetUnderMaintenanceTime(NG2Configuration.Instance.ProductId);
                 if (infoUM.IsUnderMaintenanceTime)
                 {
-                    dynamic response = Activator.CreateInstance<TResponse>();
-                    response.TimeStamp = req.TimeStamp;
-                    response.Result.Seq = req.Call.Seq;
                     response.Result.ErrorCode = (int)ApiError.UM;
                     response.Result.ErrorDescription = string.Format(ApiResourceHelper.GetResource(ApiError.UM.ToString(), req.Language), infoUM.From, infoUM.To);
-                    response.LogId = logId;
-                    response.UserId = userId;
-
                     logger.LogResponse(logId, (int)ApiError.UM, ApiJsonConvert.SerializeObject(response));
 
                     return response;
@@ -142,32 +140,37 @@ namespace ONEbook.NG2.API.Utils
                 var errorCode = GetPropertyValue(result, "ErrorCode");
                 logger.LogResponse(logId, errorCode, result);
                 result = SetPropertyValue(result, "ErrorDescription", errorCode, req.Language);
-                dynamic res = ApiJsonConvert.DeserializeObject<TResponse>(result);
-                res.UserId = userId;
-                res.Language = req.Language;
-                res.TimeStamp = req.TimeStamp;
-                res.Result.Seq = req.Call.Seq;
-                res.LogId = logId;
+                response = ApiJsonConvert.DeserializeObject<TResponse>(result);
+                response.UserId = userId;
+                response.Language = req.Language;
+                response.TimeStamp = req.TimeStamp;
+                response.Result.Seq = req.Call.Seq;
+                response.LogId = logId;
 
-                return res;
+                return response;
             }
             catch (RemotingTimeoutException te)
             {
+                response.Result.ErrorCode = (int)ApiError.RemotingTimeoutException;
                 logger.LogResponse(logId, (int)ApiError.RemotingTimeoutException, te.ToString());
                 te.Write();
             }
             catch (RemotingException re)
             {
+                response.Result.ErrorCode = (int)ApiError.RemotingException;
                 logger.LogResponse(logId, (int)ApiError.RemotingException, re.ToString());
                 re.Write();
             }
             catch (Exception e)
             {
+                response.Result.ErrorCode = (int)ApiError.Exception;
                 logger.LogResponse(logId, (int)ApiError.Exception, e.ToString());
                 e.Write();
             }
 
-            return Activator.CreateInstance<TResponse>();
+            response.LogId = logId;
+
+            return response;
         }
 
         private static XDocument JsonToXml(string jsonString)
