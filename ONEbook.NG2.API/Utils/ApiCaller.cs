@@ -101,8 +101,7 @@ namespace ONEbook.NG2.API.Utils
 
         [SuppressMessage("StyleCop.CSharp.Nexcel.NexcelCustomRules", "SP2101:MethodMustNotContainMoreLinesThan", Justification = "Reviewed. Suppression is OK here.")]
         public static TResponse RetryInvoke<TRequest, TResponse>(ApiFunc function, TRequest request)
-        {
-            
+        {            
             dynamic req = request;            
             dynamic response = Activator.CreateInstance<TResponse>();
             long logId = req.LogId;
