@@ -27,7 +27,7 @@ namespace ONEbook.NG2.API.Log
                     objDb.AssignParamValues(param);
                     objDb.ExecuteNonQuery();
 
-                    return (long)objDb.GetParameterValue("logid");
+                    return (long)objDb.GetParameterValue("logId");
                 }
             }
             catch (Exception ex)
