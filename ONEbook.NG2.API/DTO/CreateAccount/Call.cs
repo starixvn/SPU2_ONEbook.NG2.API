@@ -31,6 +31,11 @@ namespace ONEbook.NG2.API.DTO.CreateAccount
         public int CurrencyId { get; set; }
 
         /// <summary>
+        /// Disabled status of customer, need to pass for RabbitMQ to call RetrySyncCustomers.
+        /// </summary>
+        public bool? IsDisabled { get; set; }
+
+        /// <summary>
         /// Message site id of customer. SMA is 0. Member is 4100300.
         /// </summary>
         public int SiteId
