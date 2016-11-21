@@ -80,14 +80,6 @@ namespace ONEbook.NG2.API
             return response;
         }
 
-        public DTO.CreateCurrency.Response CreateCurrency(DTO.CreateCurrency.Request request)
-        {
-            var response = ApiCaller.Invoke<DTO.CreateCurrency.Request, DTO.CreateCurrency.Response>(ApiFunc.CreateCurrency, request);
-            response.Result.ErrorCode = _debug ? _errorCode : response.Result.ErrorCode;
-
-            return response;
-        }
-
         public DTO.ShowParlayDetail.Response ShowParlayDetail(DTO.ShowParlayDetail.Request request)
         {
             var response = ApiCaller.Invoke<DTO.ShowParlayDetail.Request, DTO.ShowParlayDetail.Response>(ApiFunc.ShowParlayDetail, request);

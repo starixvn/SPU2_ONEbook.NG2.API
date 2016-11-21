@@ -55,13 +55,6 @@
         DTO.ShowTicketResult.Response ShowTicketResult(DTO.ShowTicketResult.Request request);
 
         /// <summary>
-        /// Create currency.
-        /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
-        DTO.CreateCurrency.Response CreateCurrency(DTO.CreateCurrency.Request request);
-
-        /// <summary>
         /// Show parlay detail.
         /// </summary>
         /// <param name="request"></param>

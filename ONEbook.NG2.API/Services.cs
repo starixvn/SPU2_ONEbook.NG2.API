@@ -87,16 +87,6 @@ namespace ONEbook.NG2.API
         }
 
         /// <summary>
-        /// Create currency to 3rd.
-        /// </summary>
-        /// <param name="request">Request info.</param>
-        /// <returns>Response info.</returns>
-        public DTO.CreateCurrency.Response CreateCurrency(DTO.CreateCurrency.Request request)
-        {
-            return Instance.CreateCurrency(request);
-        }
-
-        /// <summary>
         /// Shows parlay details.
         /// </summary>
         /// <param name="request">Request info</param>
