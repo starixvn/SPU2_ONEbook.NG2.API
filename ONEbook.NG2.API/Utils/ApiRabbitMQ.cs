@@ -1,6 +1,6 @@
 ﻿using System;
 using EasyNetQ;
-using Fanex.Module.Logs.Services;
+using Fanex.Logging.Extensions.Web;
 using ONEbook.NG2.API.Configuration;
 
 namespace ONEbook.NG2.API.Utils
@@ -35,7 +35,7 @@ namespace ONEbook.NG2.API.Utils
             }
             catch (Exception ex)
             {
-                ex.Write();
+                ExceptionHandler.Handle(ex);
 
                 return false;
             }

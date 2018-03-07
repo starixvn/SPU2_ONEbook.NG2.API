@@ -8,7 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Linq;
-using Fanex.Module.Logs.Services;
+using Fanex.Logging.Extensions.Web;
 using ONEbook.NG2.API.Configuration;
 using ONEbook.NG2.API.Log;
 
@@ -79,19 +79,19 @@ namespace ONEbook.NG2.API.Utils
             {
                 response.Result.ErrorCode = (int)ApiError.RemotingTimeoutException;
                 logger.LogResponse(logId, (int)ApiError.RemotingTimeoutException, te.ToString());
-                te.Write();
+                ExceptionHandler.Handle(te);
             }
             catch (RemotingException re)
             {
                 response.Result.ErrorCode = (int)ApiError.RemotingException;
                 logger.LogResponse(logId, (int)ApiError.RemotingException, re.ToString());
-                re.Write();
+                ExceptionHandler.Handle(re);
             }
             catch (Exception e)
             {
                 response.Result.ErrorCode = (int)ApiError.Exception;
                 logger.LogResponse(logId, (int)ApiError.Exception, e.ToString());
-                e.Write();
+                ExceptionHandler.Handle(e);
             }
             
             response.LogId = logId;
@@ -152,19 +152,19 @@ namespace ONEbook.NG2.API.Utils
             {
                 response.Result.ErrorCode = (int)ApiError.RemotingTimeoutException;
                 logger.LogResponse(logId, (int)ApiError.RemotingTimeoutException, te.ToString());
-                te.Write();
+                ExceptionHandler.Handle(te);
             }
             catch (RemotingException re)
             {
                 response.Result.ErrorCode = (int)ApiError.RemotingException;
                 logger.LogResponse(logId, (int)ApiError.RemotingException, re.ToString());
-                re.Write();
+                ExceptionHandler.Handle(re);
             }
             catch (Exception e)
             {
                 response.Result.ErrorCode = (int)ApiError.Exception;
                 logger.LogResponse(logId, (int)ApiError.Exception, e.ToString());
-                e.Write();
+                ExceptionHandler.Handle(e);
             }
 
             response.LogId = logId;

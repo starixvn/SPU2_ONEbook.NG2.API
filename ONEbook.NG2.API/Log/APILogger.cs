@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Xml.Linq;
 using Fanex.Data;
-using Fanex.Module.Logs.Services;
+using Fanex.Logging.Extensions.Web;
 
 namespace ONEbook.NG2.API.Log
 {
@@ -32,7 +32,7 @@ namespace ONEbook.NG2.API.Log
             }
             catch (Exception ex)
             {
-                ex.Write();
+                ExceptionHandler.Handle(ex);
             }
 
             return 0;
@@ -57,7 +57,7 @@ namespace ONEbook.NG2.API.Log
             }
             catch (Exception ex)
             {
-                ex.Write();
+                ExceptionHandler.Handle(ex);
             }
 
             return false;
