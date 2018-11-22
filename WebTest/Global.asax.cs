@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Security;
-using System.Web.SessionState;
+using Fanex.Data;
+using Fanex.Data.CrossCutting.WrappingException;
+using Fanex.Data.OldConnectionStringProvider;
 
 namespace WebTest
 {
@@ -11,7 +9,12 @@ namespace WebTest
     {
         protected void Application_Start(object sender, EventArgs e)
         {
-            Fanex.Data.Configuration.DbSettingProviderManager.Current.Start();
+            DbSettingProviderManager
+                .StartNewSession()
+                .Use(new OldConnectionStringProvider())
+                .UseDefaultDbSettingProvider(resourcePath: "Areas/Logs", enableWatching: true)
+                .Use((settingKey, commandTimeout) => new WrappingExceptionObjectDb(settingKey, commandTimeout))
+                .Run();
         }
 
         protected void Session_Start(object sender, EventArgs e)

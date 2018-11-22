@@ -1,4 +1,7 @@
-﻿using NUnit.Framework;
+﻿using Fanex.Data;
+using Fanex.Data.CrossCutting.WrappingException;
+using Fanex.Data.OldConnectionStringProvider;
+using NUnit.Framework;
 
 namespace ONEbook.NG2.API.Test
 {
@@ -13,7 +16,12 @@ namespace ONEbook.NG2.API.Test
         public ServicesTest()
         {
             _service = new Services();
-            Fanex.Data.Configuration.DbSettingProviderManager.Current.Start();
+            DbSettingProviderManager
+                .StartNewSession()
+                .Use(new OldConnectionStringProvider())
+                .UseDefaultDbSettingProvider(resourcePath: "Areas/Logs", enableWatching: true)
+                .Use((settingKey, commandTimeout) => new WrappingExceptionObjectDb(settingKey, commandTimeout))
+                .Run();
         }
         
         [Test]
